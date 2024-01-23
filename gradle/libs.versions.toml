@@ -1,0 +1,40 @@
+[versions]
+android-compileSdk = "34"
+android-minSdk = "24"
+android-targetSdk = "34"
+
+#Libraries Versions
+kotlin = "1.9.21"
+activity-compose = "1.8.2"
+animation = "1.5.4"
+compiler = "1.5.6"
+foundation = "1.5.4"
+material3 = "1.1.2"
+runtime = "1.5.4"
+ui = "1.5.4"
+
+#Plugins Versions
+gradle-plugin = "8.2.1"
+compose-plugin = "1.5.11"
+
+[libraries]
+jetbrains-kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+jetbrains-kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
+androidx-compose-animation = { module = "androidx.compose.animation:animation", version.ref = "animation" }
+androidx-compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compiler"}
+androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundation" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3"}
+androidx-compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "runtime"}
+androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "ui"}
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "ui" }
+androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "ui" }
+
+[bundles]
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "gradle-plugin" }
+android-library = { id = "com.android.library", version.ref = "gradle-plugin" }
+jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
