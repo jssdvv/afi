@@ -2,10 +2,15 @@ import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
+    alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
     alias(libs.plugins.jetbrains.kotlin.multiplatform)
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.android.application)
+    alias(libs.plugins.cashapp.sqldelight)
 }
+
+group = "com.jssdvv.afi"
+version = "1.0"
 
 kotlin {
     androidTarget {
@@ -37,20 +42,56 @@ kotlin {
         val desktopMain by getting
         
         androidMain.dependencies {
+            //AndroidX
             implementation(libs.androidx.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
+
+            //Coroutines
+            implementation(libs.jetbrains.kotlinx.coroutines.android)
+
+            //HTTP Client
+            implementation(libs.ktor.client.okhttp)
+
+            //Databases
+            implementation(libs.cashapp.sqldelight.android.driver)
         }
         commonMain.dependencies {
-            implementation(compose.animation)
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.ui)
+            //Kotlin Multiplatform Compose
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
+            implementation(compose.foundation)
+            implementation(compose.material3)
+            implementation(compose.animation)
+            implementation(compose.runtime)
+            implementation(compose.ui)
+
+            //Coroutines
+            implementation(libs.jetbrains.kotlinx.coroutines.core)
+
+            //HTTP Client
+            implementation(libs.ktor.client.core)
+
+            //Serialization
+            implementation(libs.jetbrains.kotlinx.serialization.json)
+
+            //Navigation
+            implementation(libs.adrielcafe.voyager.transitions)
+            implementation(libs.adrielcafe.voyager.navigator)
+            implementation(libs.adrielcafe.voyager.koin)
         }
         desktopMain.dependencies {
+            //Kotlin Multiplatform Compose
             implementation(compose.desktop.currentOs)
+
+            //Databases
+            implementation(libs.cashapp.sqldelight.sqlite.driver)
+        }
+        iosMain.dependencies {
+            //HTTP Client
+            implementation(libs.ktor.client.darwin)
+
+            //Databases
+            implementation(libs.cashapp.sqldelight.native.driver)
         }
     }
 }
@@ -92,6 +133,14 @@ android {
     }
     dependencies {
         debugImplementation(libs.androidx.compose.ui.tooling)
+    }
+}
+
+sqldelight {
+    databases {
+        create("Database") {
+            packageName.set("com.jssdvv.afi")
+        }
     }
 }
 
