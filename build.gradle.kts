@@ -7,4 +7,5 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.multiplatform) apply false
     alias(libs.plugins.jetbrains.kotlin.plugin.serialization) apply false
     alias(libs.plugins.cashapp.sqldelight) apply false
+    alias(libs.plugins.icerock.mobile.multiplatform.resources) apply false
 }
