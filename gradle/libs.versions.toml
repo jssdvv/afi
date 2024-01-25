@@ -17,6 +17,7 @@ kotlinx-coroutines = "1.7.3"
 kotlinx-serialization = "1.6.0"
 voyager = "1.0.0"
 sqldelight = "2.0.1"
+resources = "0.23.0"
 
 #Plugins Versions
 gradle-plugin = "8.2.2"
@@ -52,6 +53,8 @@ cashapp-sqldelight-android-driver = { module = "app.cash.sqldelight:android-driv
 cashapp-sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 cashapp-sqldelight-sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
 
+icerock-moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "resources" }
+icerock-moko-resources-test = { module = "dev.icerock.moko:resources-test", version.ref = "resources" }
 
 [bundles]
 
@@ -62,3 +65,4 @@ jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.seri
 jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 cashapp-sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
+icerock-mobile-multiplatform-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "resources"}
