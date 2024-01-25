@@ -1,3 +1,4 @@
+import dev.icerock.gradle.MRVisibility
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
@@ -7,6 +8,7 @@ plugins {
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.android.application)
     alias(libs.plugins.cashapp.sqldelight)
+    alias(libs.plugins.icerock.mobile.multiplatform.resources)
 }
 
 group = "com.jssdvv.afi"
@@ -35,63 +37,82 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+            export(libs.icerock.moko.resources.compose)
         }
     }
     
     sourceSets {
-        val desktopMain by getting
-        
-        androidMain.dependencies {
-            //AndroidX
-            implementation(libs.androidx.compose.ui.tooling.preview)
-            implementation(libs.androidx.activity.compose)
+        val commonMain by getting {
+            dependencies {
+                //Kotlin Multiplatform Compose
+                @OptIn(ExperimentalComposeLibrary::class)
+                implementation(compose.components.resources)
+                implementation(compose.foundation)
+                implementation(compose.material3)
+                implementation(compose.animation)
+                implementation(compose.runtime)
+                implementation(compose.ui)
 
-            //Coroutines
-            implementation(libs.jetbrains.kotlinx.coroutines.android)
+                //Coroutines
+                implementation(libs.jetbrains.kotlinx.coroutines.core)
 
-            //HTTP Client
-            implementation(libs.ktor.client.okhttp)
+                //HTTP Client
+                implementation(libs.ktor.client.core)
 
-            //Databases
-            implementation(libs.cashapp.sqldelight.android.driver)
+                //Serialization
+                implementation(libs.jetbrains.kotlinx.serialization.json)
+
+                //Navigation
+                implementation(libs.adrielcafe.voyager.transitions)
+                implementation(libs.adrielcafe.voyager.navigator)
+                implementation(libs.adrielcafe.voyager.koin)
+
+                //Resources Management
+                implementation(libs.icerock.moko.resources.compose)
+            }
         }
-        commonMain.dependencies {
-            //Kotlin Multiplatform Compose
-            @OptIn(ExperimentalComposeLibrary::class)
-            implementation(compose.components.resources)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.animation)
-            implementation(compose.runtime)
-            implementation(compose.ui)
+        val androidMain by getting {
+            dependsOn(commonMain)
+            dependencies {
+                //AndroidX
+                implementation(libs.androidx.compose.ui.tooling.preview)
+                implementation(libs.androidx.activity.compose)
 
-            //Coroutines
-            implementation(libs.jetbrains.kotlinx.coroutines.core)
+                //Coroutines
+                implementation(libs.jetbrains.kotlinx.coroutines.android)
 
-            //HTTP Client
-            implementation(libs.ktor.client.core)
+                //HTTP Client
+                implementation(libs.ktor.client.okhttp)
 
-            //Serialization
-            implementation(libs.jetbrains.kotlinx.serialization.json)
-
-            //Navigation
-            implementation(libs.adrielcafe.voyager.transitions)
-            implementation(libs.adrielcafe.voyager.navigator)
-            implementation(libs.adrielcafe.voyager.koin)
+                //Databases
+                implementation(libs.cashapp.sqldelight.android.driver)
+            }
         }
-        desktopMain.dependencies {
-            //Kotlin Multiplatform Compose
-            implementation(compose.desktop.currentOs)
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by creating {
+            dependsOn(commonMain)
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+                //HTTP Client
+                implementation(libs.ktor.client.darwin)
 
-            //Databases
-            implementation(libs.cashapp.sqldelight.sqlite.driver)
+                //Databases
+                implementation(libs.cashapp.sqldelight.native.driver)
+            }
         }
-        iosMain.dependencies {
-            //HTTP Client
-            implementation(libs.ktor.client.darwin)
+        val desktopMain by getting {
+            dependsOn(commonMain)
+            dependencies {
+                //Kotlin Multiplatform Compose
+                implementation(compose.desktop.currentOs)
 
-            //Databases
-            implementation(libs.cashapp.sqldelight.native.driver)
+                //Databases
+                implementation(libs.cashapp.sqldelight.sqlite.driver)
+            }
         }
     }
 }
@@ -134,6 +155,14 @@ android {
     dependencies {
         debugImplementation(libs.androidx.compose.ui.tooling)
     }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "com.jssdvv.afi"
+    multiplatformResourcesClassName = "sharedRes"
+    multiplatformResourcesVisibility = MRVisibility.Public
+    iosBaseLocalizationRegion = "en"
+    multiplatformResourcesSourceSet = "commonMain"
 }
 
 sqldelight {
