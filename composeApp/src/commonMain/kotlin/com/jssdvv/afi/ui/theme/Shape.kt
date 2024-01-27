@@ -1,4 +1,4 @@
-package ui
+package com.jssdvv.afi.ui.theme
 
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Shapes
