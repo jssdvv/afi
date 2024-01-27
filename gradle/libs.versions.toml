@@ -53,6 +53,7 @@ cashapp-sqldelight-android-driver = { module = "app.cash.sqldelight:android-driv
 cashapp-sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 cashapp-sqldelight-sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
 
+icerock-moko-resources = { module = "dev.icerock.moko:resources", version.ref = "resources" }
 icerock-moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "resources" }
 icerock-moko-resources-test = { module = "dev.icerock.moko:resources-test", version.ref = "resources" }
 
