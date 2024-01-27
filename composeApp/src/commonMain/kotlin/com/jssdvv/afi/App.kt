@@ -1,9 +1,12 @@
+package com.jssdvv.afi
+
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import ui.Theme
+import com.jssdvv.afi.ui.theme.Theme
 
 @Composable
 fun App() {
@@ -16,3 +19,4 @@ fun App() {
         }
     }
 }
+
