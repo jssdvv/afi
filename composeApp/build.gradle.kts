@@ -159,7 +159,7 @@ android {
 
 multiplatformResources {
     multiplatformResourcesPackage = "com.jssdvv.afi"
-    multiplatformResourcesClassName = "sharedRes"
+    multiplatformResourcesClassName = "MR"
     multiplatformResourcesVisibility = MRVisibility.Public
     iosBaseLocalizationRegion = "en"
     multiplatformResourcesSourceSet = "commonMain"
