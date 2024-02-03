@@ -63,9 +63,8 @@ kotlin {
                 implementation(libs.jetbrains.kotlinx.serialization.json)
 
                 //Navigation
-                implementation(libs.adrielcafe.voyager.transitions)
-                implementation(libs.adrielcafe.voyager.navigator)
-                implementation(libs.adrielcafe.voyager.koin)
+                implementation(libs.arkivanov.decompose)
+                implementation(libs.arkivanov.decompose.extensions.compose)
 
                 //Resources Management
                 implementation(libs.icerock.moko.resources.compose)
