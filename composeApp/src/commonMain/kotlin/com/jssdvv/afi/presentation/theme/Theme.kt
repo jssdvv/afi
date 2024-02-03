@@ -1,4 +1,4 @@
-package com.jssdvv.afi.ui.theme
+package com.jssdvv.afi.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.Typography
