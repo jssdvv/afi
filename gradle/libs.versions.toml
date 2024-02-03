@@ -18,6 +18,8 @@ kotlinx-serialization = "1.6.0"
 voyager = "1.0.0"
 sqldelight = "2.0.1"
 resources = "0.23.0"
+decompose = "2.2.2"
+extensions-compose = "3.0.0-alpha01"
 
 #Plugins Versions
 gradle-plugin = "8.2.2"
@@ -48,6 +50,9 @@ ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "kto
 adrielcafe-voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 adrielcafe-voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
 adrielcafe-voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
+
+arkivanov-decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
+arkivanov-decompose-extensions-compose = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "extensions-compose" }
 
 cashapp-sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
 cashapp-sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
