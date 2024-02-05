@@ -1,9 +1,9 @@
 import dev.icerock.gradle.MRVisibility
 import org.jetbrains.compose.ExperimentalComposeLibrary
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
     alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
+    alias(libs.plugins.jetbrains.kotlin.native.cocoapods)
     alias(libs.plugins.jetbrains.kotlin.multiplatform)
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.android.application)
@@ -22,13 +22,13 @@ kotlin {
             }
         }
     }
-    
+
     jvm("desktop") {
         compilations.all {
             kotlinOptions.jvmTarget = "17"
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -40,38 +40,37 @@ kotlin {
             export(libs.icerock.moko.resources.compose)
         }
     }
-    
+
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                //Kotlin Multiplatform Compose
-                @OptIn(ExperimentalComposeLibrary::class)
-                implementation(compose.components.resources)
-                implementation(compose.foundation)
-                implementation(compose.material3)
-                implementation(compose.animation)
-                implementation(compose.runtime)
-                implementation(compose.ui)
+        applyDefaultHierarchyTemplate()
+        commonMain.dependencies {
+            //Kotlin Multiplatform Compose
+            @OptIn(ExperimentalComposeLibrary::class)
+            implementation(compose.components.resources)
+            implementation(compose.foundation)
+            implementation(compose.material3)
+            implementation(compose.animation)
+            implementation(compose.runtime)
+            implementation(compose.ui)
 
-                //Coroutines
-                implementation(libs.jetbrains.kotlinx.coroutines.core)
+            //Coroutines
+            implementation(libs.jetbrains.kotlinx.coroutines.core)
 
-                //HTTP Client
-                implementation(libs.ktor.client.core)
+            //HTTP Client
+            implementation(libs.ktor.client.core)
 
-                //Serialization
-                implementation(libs.jetbrains.kotlinx.serialization.json)
+            //Serialization
+            implementation(libs.jetbrains.kotlinx.serialization.json)
 
-                //Navigation
-                implementation(libs.arkivanov.decompose)
-                implementation(libs.arkivanov.decompose.extensions.compose)
+            //Navigation
+            implementation(libs.arkivanov.decompose)
+            implementation(libs.arkivanov.decompose.extensions.compose)
 
-                //Resources Management
-                implementation(libs.icerock.moko.resources.compose)
-            }
+            //Resources Management
+            implementation(libs.icerock.moko.resources.compose)
         }
-        val androidMain by getting {
-            dependsOn(commonMain)
+        androidMain {
+            dependsOn(commonMain.get())
             dependencies {
                 //AndroidX
                 implementation(libs.androidx.compose.ui.tooling.preview)
@@ -87,30 +86,14 @@ kotlin {
                 implementation(libs.cashapp.sqldelight.android.driver)
             }
         }
-        val iosX64Main by getting
-        val iosArm64Main by getting
-        val iosSimulatorArm64Main by getting
-        val iosMain by creating {
-            dependsOn(commonMain)
-            iosX64Main.dependsOn(this)
-            iosArm64Main.dependsOn(this)
-            iosSimulatorArm64Main.dependsOn(this)
+        iosMain {
+            dependsOn(commonMain.get())
             dependencies {
                 //HTTP Client
                 implementation(libs.ktor.client.darwin)
 
                 //Databases
                 implementation(libs.cashapp.sqldelight.native.driver)
-            }
-        }
-        val desktopMain by getting {
-            dependsOn(commonMain)
-            dependencies {
-                //Kotlin Multiplatform Compose
-                implementation(compose.desktop.currentOs)
-
-                //Databases
-                implementation(libs.cashapp.sqldelight.sqlite.driver)
             }
         }
     }
@@ -143,7 +126,7 @@ android {
         }
     }
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
         }
     }
@@ -168,31 +151,6 @@ sqldelight {
     databases {
         create("Database") {
             packageName.set("com.jssdvv.afi")
-        }
-    }
-}
-
-compose.desktop {
-    application {
-        mainClass = "MainKt"
-
-        nativeDistributions {
-            packageName = "afi"
-            //outputBaseDir.set(project.buildDir.resolve(""))
-            targetFormats(
-                TargetFormat.Deb,
-                TargetFormat.Rpm,
-                TargetFormat.Exe,
-                TargetFormat.Msi
-            )
-            linux {
-                packageVersion = "1.0.0"
-                //iconFile.set(project.file(""))
-            }
-            windows {
-                packageVersion = "1.0.0"
-                //iconFile.set(project.file(""))
-            }
         }
     }
 }
