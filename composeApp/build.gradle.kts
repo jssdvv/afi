@@ -23,12 +23,6 @@ kotlin {
         }
     }
 
-    jvm("desktop") {
-        compilations.all {
-            kotlinOptions.jvmTarget = "17"
-        }
-    }
-
     listOf(
         iosX64(),
         iosArm64(),
@@ -39,6 +33,13 @@ kotlin {
             isStatic = true
             export(libs.icerock.moko.resources.compose)
         }
+    }
+
+    cocoapods {
+        summary = "Compose Multiplatform App"
+        homepage = "https://github.com/jssdvv/AFI"
+
+        ios.deploymentTarget = "13.5"
     }
 
     sourceSets {
@@ -75,9 +76,6 @@ kotlin {
                 //AndroidX
                 implementation(libs.androidx.compose.ui.tooling.preview)
                 implementation(libs.androidx.activity.compose)
-
-                //Coroutines
-                implementation(libs.jetbrains.kotlinx.coroutines.android)
 
                 //HTTP Client
                 implementation(libs.ktor.client.okhttp)
