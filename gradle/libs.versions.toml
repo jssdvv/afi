@@ -1,74 +1,159 @@
 [versions]
+# Build Gradle
 android-compileSdk = "34"
 android-minSdk = "24"
 android-targetSdk = "34"
 
-#Libraries Versions
-kotlin = "1.9.21"
-activity-compose = "1.8.2"
-animation = "1.5.4"
-compiler = "1.5.6"
-foundation = "1.5.4"
-material3 = "1.1.2"
-runtime = "1.5.4"
-ui = "1.5.4"
-ktor = "2.3.7"
-kotlinx-coroutines = "1.7.3"
+# Jetbrains
 kotlinx-serialization = "1.6.0"
-voyager = "1.0.0"
-sqldelight = "2.0.1"
-resources = "0.23.0"
-decompose = "2.2.2"
-extensions-compose = "3.0.0-alpha01"
+kotlinx-coroutines = "1.7.3"
+kotlin = "1.9.22"
 
-#Plugins Versions
+# Androidx
+activity-compose = "1.8.2"
+camera = "1.3.1"
+foundation = "1.6.0"
+animation = "1.6.0"
+material3 = "1.1.2"
+compiler = "1.5.8"
+runtime = "1.6.0"
+ui = "1.6.0"
+
+# Ktor
+ktor = "2.3.7"
+
+# Voyager
+voyager = "1.0.0"
+
+# SQLDelight
+sqldelight = "2.0.1"
+
+# Moko
+resources = "0.23.0"
+
+# Decompose
+extensions-compose = "3.0.0-alpha01"
+decompose = "2.2.2"
+
+# Google ML Kit
+digital-ink-recognition = "18.1.0"
+barcode-scanning = "17.2.0"
+text-recognition = "16.0.0"
+image-labeling = "17.0.7"
+
+# Plugins
 gradle-plugin = "8.2.2"
-compose-plugin = "1.5.11"
+compose-plugin = "1.5.12"
+cocoapods-plugin = "1.9.22"
+uiGraphicsAndroid = "1.6.0"
 
 [libraries]
-jetbrains-kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 jetbrains-kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
-
-jetbrains-kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
-jetbrains-kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+jetbrains-kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 jetbrains-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+jetbrains-kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+jetbrains-kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
-androidx-compose-animation = { module = "androidx.compose.animation:animation", version.ref = "animation" }
-androidx-compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compiler"}
-androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundation" }
-androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3"}
-androidx-compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "runtime"}
-androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "ui"}
-androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "ui" }
+androidx-camera-extensions = { module = "androidx.camera:camera-extensions", version.ref = "camera" }
+androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "camera" }
+androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "camera" }
+androidx-camera-video = { module = "androidx.camera:camera-video", version.ref = "camera" }
+androidx-camera-view = { module = "androidx.camera:camera-view", version.ref = "camera" }
+androidx-camera-core = { module = "androidx.camera:camera-core", version.ref = "camera" }
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "ui" }
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "ui" }
+androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundation" }
+androidx-compose-animation = { module = "androidx.compose.animation:animation", version.ref = "animation" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
+androidx-compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compiler" }
+androidx-compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "runtime" }
+androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "ui" }
 
-ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
-ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 
-adrielcafe-voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 adrielcafe-voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
+adrielcafe-voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 adrielcafe-voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
 
-arkivanov-decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 arkivanov-decompose-extensions-compose = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "extensions-compose" }
+arkivanov-decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 
 cashapp-sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
 cashapp-sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 cashapp-sqldelight-sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
 
-icerock-moko-resources = { module = "dev.icerock.moko:resources", version.ref = "resources" }
 icerock-moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "resources" }
 icerock-moko-resources-test = { module = "dev.icerock.moko:resources-test", version.ref = "resources" }
+icerock-moko-resources = { module = "dev.icerock.moko:resources", version.ref = "resources" }
+
+google-mlkit-digital-ink-recognition = { module = "com.google.mlkit:digital-ink-recognition", version.ref = "digital-ink-recognition" }
+google-mlkit-barcode-scanning = { module = "com.google.mlkit:barcode-scanning", version.ref = "barcode-scanning" }
+google-mlkit-text-recognition = { module = "com.google.mlkit:text-recognition", version.ref = "text-recognition" }
+google-mlkit-image-labeling = { module = "com.google.mlkit:image-labeling", version.ref = "image-labeling" }
+androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version.ref = "uiGraphicsAndroid" }
 
 [bundles]
 
+androidx-compose = [
+    "androidx-compose-ui-tooling-preview",
+    "androidx-compose-ui-tooling",
+    "androidx-compose-foundation",
+    "androidx-compose-animation",
+    "androidx-compose-material3",
+    "androidx-compose-compiler",
+    "androidx-compose-runtime",
+    "androidx-compose-ui"
+]
+
+androidx-camera = [
+    "androidx-camera-extensions",
+    "androidx-camera-lifecycle",
+    "androidx-camera-camera2",
+    "androidx-camera-video",
+    "androidx-camera-view",
+    "androidx-camera-core"
+]
+
+adrielcafe-voyager = [
+    "adrielcafe-voyager-transitions",
+    "adrielcafe-voyager-navigator",
+    "adrielcafe-voyager-koin"
+]
+
+arkivanov-decompose = [
+    "arkivanov-decompose-extensions-compose",
+    "arkivanov-decompose"
+]
+
+icerock-moko = [
+    "icerock-moko-resources-compose",
+    "icerock-moko-resources-test",
+    "icerock-moko-resources"
+]
+
+google-mlkit = [
+    "google-mlkit-digital-ink-recognition",
+    "google-mlkit-barcode-scanning",
+    "google-mlkit-text-recognition",
+    "google-mlkit-image-labeling"
+]
+
 [plugins]
+# Android
 android-application = { id = "com.android.application", version.ref = "gradle-plugin" }
 android-library = { id = "com.android.library", version.ref = "gradle-plugin" }
+
+# Jetbrains
 jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+jetbrains-kotlin-native-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "cocoapods-plugin" }
 jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+
+# SQLDelight
 cashapp-sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
-icerock-mobile-multiplatform-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "resources"}
+
+# Moko
+icerock-mobile-multiplatform-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "resources" }
