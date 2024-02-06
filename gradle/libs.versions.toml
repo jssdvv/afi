@@ -32,7 +32,7 @@ sqldelight = "2.0.1"
 resources = "0.23.0"
 
 # Decompose
-extensions-compose = "3.0.0-alpha01"
+extensions-compose-jetbrains = "3.0.0-alpha01"
 decompose = "2.2.2"
 
 # Google ML Kit
@@ -45,7 +45,6 @@ image-labeling = "17.0.7"
 gradle-plugin = "8.2.2"
 compose-plugin = "1.5.12"
 cocoapods-plugin = "1.9.22"
-uiGraphicsAndroid = "1.6.0"
 
 [libraries]
 jetbrains-kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
@@ -75,10 +74,11 @@ ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "kto
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 
 adrielcafe-voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
+adrielcafe-voyager-screenmodel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
 adrielcafe-voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 adrielcafe-voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
 
-arkivanov-decompose-extensions-compose = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "extensions-compose" }
+arkivanov-decompose-extensions-compose-jetbrains = { module = "com.arkivanov.decompose:extensions-compose-jetbrains", version.ref = "extensions-compose-jetbrains" }
 arkivanov-decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 
 cashapp-sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
@@ -93,7 +93,6 @@ google-mlkit-digital-ink-recognition = { module = "com.google.mlkit:digital-ink-
 google-mlkit-barcode-scanning = { module = "com.google.mlkit:barcode-scanning", version.ref = "barcode-scanning" }
 google-mlkit-text-recognition = { module = "com.google.mlkit:text-recognition", version.ref = "text-recognition" }
 google-mlkit-image-labeling = { module = "com.google.mlkit:image-labeling", version.ref = "image-labeling" }
-androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version.ref = "uiGraphicsAndroid" }
 
 [bundles]
 
@@ -119,12 +118,13 @@ androidx-camera = [
 
 adrielcafe-voyager = [
     "adrielcafe-voyager-transitions",
+    "adrielcafe-voyager-screenmodel",
     "adrielcafe-voyager-navigator",
     "adrielcafe-voyager-koin"
 ]
 
 arkivanov-decompose = [
-    "arkivanov-decompose-extensions-compose",
+    "arkivanov-decompose-extensions-compose-jetbrains",
     "arkivanov-decompose"
 ]
 
