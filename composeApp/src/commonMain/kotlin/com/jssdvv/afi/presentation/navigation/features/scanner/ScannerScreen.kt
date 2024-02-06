@@ -1,8 +1,10 @@
 package com.jssdvv.afi.presentation.navigation.features.scanner
 
 import androidx.compose.runtime.Composable
+import cafe.adriel.voyager.core.screen.Screen
 
-@Composable
-fun ScannerScreen() {
-
+class ScannerScreen : Screen {
+    @Composable
+    override fun Content() {
+    }
 }
