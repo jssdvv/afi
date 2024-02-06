@@ -5,8 +5,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
     alias(libs.plugins.jetbrains.kotlin.native.cocoapods)
     alias(libs.plugins.jetbrains.kotlin.multiplatform)
-    alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.cashapp.sqldelight)
     alias(libs.plugins.icerock.mobile.multiplatform.resources)
 }
@@ -43,32 +43,38 @@ kotlin {
     }
 
     sourceSets {
-        applyDefaultHierarchyTemplate()
-        commonMain.dependencies {
-            //Kotlin Multiplatform Compose
-            @OptIn(ExperimentalComposeLibrary::class)
-            implementation(compose.components.resources)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.animation)
-            implementation(compose.runtime)
-            implementation(compose.ui)
+        commonMain {
+            dependencies {
+                //Kotlin Multiplatform Compose
+                @OptIn(ExperimentalComposeLibrary::class)
+                implementation(compose.components.resources)
+                implementation(compose.foundation)
+                implementation(compose.material3)
+                implementation(compose.animation)
+                implementation(compose.runtime)
+                implementation(compose.ui)
 
-            //Coroutines
-            implementation(libs.jetbrains.kotlinx.coroutines.core)
+                //Coroutines
+                implementation(libs.jetbrains.kotlinx.coroutines.core)
 
-            //HTTP Client
-            implementation(libs.ktor.client.core)
+                //HTTP Client
+                implementation(libs.ktor.client.core)
 
-            //Serialization
-            implementation(libs.jetbrains.kotlinx.serialization.json)
+                //Serialization
+                implementation(libs.jetbrains.kotlinx.serialization.json)
 
-            //Navigation
-            implementation(libs.arkivanov.decompose)
-            implementation(libs.arkivanov.decompose.extensions.compose)
+                //Navigation
+                implementation(libs.adrielcafe.voyager.koin)
+                implementation(libs.adrielcafe.voyager.navigator)
+                implementation(libs.adrielcafe.voyager.transitions)
+                implementation(libs.adrielcafe.voyager.screenmodel)
 
-            //Resources Management
-            implementation(libs.icerock.moko.resources.compose)
+                implementation(libs.arkivanov.decompose)
+                implementation(libs.arkivanov.decompose.extensions.compose.jetbrains)
+
+                //Resources Management
+                implementation(libs.icerock.moko.resources.compose)
+            }
         }
         androidMain {
             dependsOn(commonMain.get())
