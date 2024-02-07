@@ -22,6 +22,9 @@ ui = "1.6.0"
 # Ktor
 ktor = "2.3.7"
 
+# Koin
+koin = "3.2.0"
+
 # Voyager
 voyager = "1.0.0"
 
@@ -72,6 +75,10 @@ androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "ui" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+
+insert-koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+insert-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+insert-koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 
 adrielcafe-voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
 adrielcafe-voyager-screenmodel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
