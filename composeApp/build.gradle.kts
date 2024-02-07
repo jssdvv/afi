@@ -69,9 +69,6 @@ kotlin {
                 implementation(libs.adrielcafe.voyager.transitions)
                 implementation(libs.adrielcafe.voyager.screenmodel)
 
-                implementation(libs.arkivanov.decompose)
-                implementation(libs.arkivanov.decompose.extensions.compose.jetbrains)
-
                 //Resources Management
                 implementation(libs.icerock.moko.resources.compose)
             }
