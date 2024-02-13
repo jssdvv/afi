@@ -2,4 +2,7 @@
 <resources>
     <string name="app_title">Activos Fijos e Inventarios</string>
     <string name="app_acronym">AFI</string>
+    <string name="scanner_tab_title">Escáner</string>
+    <string name="formats_tab_title">Formatos</string>
+    <string name="directory_tab_title">Directorio</string>
 </resources>

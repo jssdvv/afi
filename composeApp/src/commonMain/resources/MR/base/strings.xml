@@ -2,4 +2,7 @@
 <resources>
     <string name="app_title">Fixed Assets &amp; Inventories</string>
     <string name="app_acronym">AFI</string>
+    <string name="scanner_tab_title">Scanner</string>
+    <string name="formats_tab_title">Formats</string>
+    <string name="directory_tab_title">Directory</string>
 </resources>
