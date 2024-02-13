@@ -43,7 +43,7 @@ kotlin {
     }
 
     sourceSets {
-        commonMain {
+        val commonMain by getting {
             dependencies {
                 //Kotlin Multiplatform Compose
                 @OptIn(ExperimentalComposeLibrary::class)
@@ -74,8 +74,8 @@ kotlin {
                 implementation(libs.icerock.moko.resources.compose)
             }
         }
-        androidMain {
-            dependsOn(commonMain.get())
+        val androidMain by getting {
+            dependsOn(commonMain)
             dependencies {
                 //AndroidX
                 implementation(libs.androidx.compose.ui.tooling.preview)
@@ -88,8 +88,14 @@ kotlin {
                 implementation(libs.cashapp.sqldelight.android.driver)
             }
         }
-        iosMain {
-            dependsOn(commonMain.get())
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by creating {
+            dependsOn(commonMain)
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
             dependencies {
                 //HTTP Client
                 implementation(libs.ktor.client.darwin)
