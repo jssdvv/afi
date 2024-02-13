@@ -5,16 +5,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.navigator.tab.CurrentTab
 import cafe.adriel.voyager.navigator.tab.TabNavigator
-import com.jssdvv.afi.presentation.features.scanner.ScannerTab
 
 @Composable
 fun Navigator() {
+    val navigationItems = listOf(
+        NavigationItem.ScannerItem,
+        NavigationItem.FormatsItem,
+        NavigationItem.DirectoryItem
+    )
     TabNavigator(
-        tab = ScannerTab()
+        navigationItems.first().tab
     ) { tabNavigator ->
         Scaffold(
             modifier = Modifier,
-            bottomBar = { NavigationBottomBar(tabNavigator) }
+            bottomBar = { NavigationBar(tabNavigator, navigationItems) },
+            topBar = { TopBar() }
         ) { paddingValues ->
             CurrentTab()
         }
