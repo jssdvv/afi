@@ -68,6 +68,7 @@ kotlin {
                 implementation(libs.adrielcafe.voyager.navigator)
                 implementation(libs.adrielcafe.voyager.transitions)
                 implementation(libs.adrielcafe.voyager.screenmodel)
+                implementation(libs.adrielcafe.voyager.tabnavigator)
 
                 //Resources Management
                 implementation(libs.icerock.moko.resources.compose)
