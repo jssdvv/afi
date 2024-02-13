@@ -1,5 +1,6 @@
 package com.jssdvv.afi.presentation.navigation
 
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarDefaults
@@ -15,8 +16,9 @@ import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.navigator.tab.TabNavigator
 
 @Composable
-fun NavigationBottomBar(
-    tabNavigator: TabNavigator
+fun NavigationBar(
+    tabNavigator: TabNavigator,
+    navigationItems: List<NavigationItem>
 ) {
     NavigationBar(
         modifier = Modifier,
@@ -25,11 +27,6 @@ fun NavigationBottomBar(
         contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
         windowInsets = NavigationBarDefaults.windowInsets
     ) {
-        val navigationItems = listOf(
-            NavigationItem.ScannerItem,
-            NavigationItem.FormatsItem,
-            NavigationItem.DirectoryItem
-        )
         var selectedItem by rememberSaveable {
             mutableStateOf(0)
         }
@@ -42,14 +39,20 @@ fun NavigationBottomBar(
                 },
                 icon = {
                     if (selectedItem == index) {
-                        navigationItem.activeIcon
+                        Icon(
+                            imageVector = navigationItem.activeIcon,
+                            contentDescription = navigationItem.title
+                        )
                     } else {
-                        navigationItem.inactiveIcon
+                        Icon(
+                            imageVector = navigationItem.inactiveIcon,
+                            contentDescription = navigationItem.title
+                        )
                     }
                 },
                 modifier = Modifier,
                 enabled = true,
-                label = { Text(navigationItem.label) },
+                label = { Text(navigationItem.title) },
                 alwaysShowLabel = true,
                 colors = NavigationBarItemDefaults.colors(),
             )
