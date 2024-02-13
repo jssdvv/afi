@@ -80,6 +80,8 @@ insert-koin-android = { module = "io.insert-koin:koin-android", version.ref = "k
 insert-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 insert-koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 
+adrielcafe-voyager-bottomsheetnavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
+adrielcafe-voyager-tabnavigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
 adrielcafe-voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
 adrielcafe-voyager-screenmodel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
 adrielcafe-voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
