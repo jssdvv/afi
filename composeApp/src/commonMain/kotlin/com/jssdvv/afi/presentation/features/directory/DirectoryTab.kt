@@ -21,7 +21,6 @@ class DirectoryTab : Tab {
                 )
             }
         }
-
     @Composable
     override fun Content() {
         Text("Pantalla directorio")

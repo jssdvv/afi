@@ -18,7 +18,6 @@ class FormatsTab : Tab {
                 )
             }
         }
-
     @Composable
     override fun Content() {
         Text("Pantalla formatos")

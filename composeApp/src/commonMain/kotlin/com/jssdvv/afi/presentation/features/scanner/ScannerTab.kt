@@ -18,7 +18,6 @@ class ScannerTab : Tab {
                 )
             }
         }
-
     @Composable
     override fun Content() {
         Text("Pantalla escaner")
