@@ -14,6 +14,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.navigator.tab.TabNavigator
+import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
@@ -39,13 +40,13 @@ fun NavigationBar(
                 icon = {
                     if (selectedItem == index) {
                         Icon(
-                            imageVector = navigationItem.activeIcon,
-                            contentDescription = stringResource(navigationItem.title)
+                            contentDescription = stringResource(navigationItem.title),
+                            painter = painterResource(navigationItem.activeIcon)
                         )
                     } else {
                         Icon(
-                            imageVector = navigationItem.inactiveIcon,
-                            contentDescription = stringResource(navigationItem.title)
+                            contentDescription = stringResource(navigationItem.title),
+                            painter = painterResource(navigationItem.inactiveIcon)
                         )
                     }
                 },
