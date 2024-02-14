@@ -8,17 +8,18 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.navigator.tab.TabNavigator
+import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun NavigationBar(
     tabNavigator: TabNavigator,
-    navigationItems: List<NavigationItem>
+    navigationItems: List<NavigationTabs>
 ) {
     NavigationBar(
         modifier = Modifier,
@@ -27,9 +28,7 @@ fun NavigationBar(
         contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
         windowInsets = NavigationBarDefaults.windowInsets
     ) {
-        var selectedItem by rememberSaveable {
-            mutableStateOf(0)
-        }
+        var selectedItem by rememberSaveable { mutableStateOf(0) }
         navigationItems.forEachIndexed { index, navigationItem ->
             NavigationBarItem(
                 selected = tabNavigator.current == navigationItem.tab,
@@ -41,18 +40,18 @@ fun NavigationBar(
                     if (selectedItem == index) {
                         Icon(
                             imageVector = navigationItem.activeIcon,
-                            contentDescription = navigationItem.title
+                            contentDescription = stringResource(navigationItem.title)
                         )
                     } else {
                         Icon(
                             imageVector = navigationItem.inactiveIcon,
-                            contentDescription = navigationItem.title
+                            contentDescription = stringResource(navigationItem.title)
                         )
                     }
                 },
                 modifier = Modifier,
                 enabled = true,
-                label = { Text(navigationItem.title) },
+                label = { Text(stringResource(navigationItem.title)) },
                 alwaysShowLabel = true,
                 colors = NavigationBarItemDefaults.colors(),
             )
