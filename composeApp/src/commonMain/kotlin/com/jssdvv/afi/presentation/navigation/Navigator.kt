@@ -20,7 +20,8 @@ fun Navigator() {
     val navigationItems = listOf(
         NavigationTabs.ScannerTab,
         NavigationTabs.FormatsTab,
-        NavigationTabs.DirectoryTab
+        NavigationTabs.DirectoryTab,
+        NavigationTabs.MapsTab
     )
     CompositionLocalProvider(
         LocalContentPadding provides localPaddingValues
