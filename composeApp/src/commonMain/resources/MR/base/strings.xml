@@ -5,4 +5,5 @@
     <string name="scanner_tab_title">Scanner</string>
     <string name="formats_tab_title">Formats</string>
     <string name="directory_tab_title">Directory</string>
+    <string name="maps_tab_title">Maps</string>
 </resources>
