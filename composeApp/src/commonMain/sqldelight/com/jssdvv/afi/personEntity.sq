@@ -1,0 +1,54 @@
+import kotlin.String;
+import kotlin.collections.List;
+
+CREATE TABLE personEntity (
+    id INTEGER PRIMARY KEY NOT NULL,
+    names TEXT AS List<String> NOT NULL,
+    surnames TEXT AS List<String> NOT NULL,
+    unit TEXT NOT NULL,
+    role TEXT NOT NULL,
+    email TEXT,
+    extensionNumber INTEGER
+);
+
+getAll:
+SELECT *
+FROM personEntity;
+
+getPersonById:
+SELECT *
+FROM personEntity
+WHERE id = :id;
+
+getPersonByNamesOrSurnames:
+SELECT *
+FROM personEntity
+WHERE names LIKE ('% ' || :name)
+OR names LIKE (:name || ' %')
+OR surnames LIKE ('% ' || :name)
+OR surnames LIKE (:name || ' %');
+
+getPersonByUnit:
+SELECT *
+FROM personEntity
+WHERE unit = :unit;
+
+getPersonByRole:
+SELECT *
+FROM personEntity
+WHERE role = :role;
+
+getPersonByExtensionNumber:
+SELECT *
+FROM personEntity
+WHERE extensionNumber = :extensionNumber;
+
+insertPerson:
+INSERT OR REPLACE
+INTO personEntity
+VALUES (?, ?, ?, ?, ?, ?, ?);
+
+deletePersonById:
+DELETE FROM personEntity
+WHERE id = :id;
+
