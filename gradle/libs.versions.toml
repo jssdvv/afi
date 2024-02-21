@@ -19,6 +19,9 @@ compiler = "1.5.8"
 runtime = "1.6.0"
 ui = "1.6.0"
 
+# Ksoup
+ksoup = "0.3.1"
+
 # Ktor
 ktor = "2.3.7"
 
@@ -71,6 +74,8 @@ androidx-compose-material3 = { module = "androidx.compose.material3:material3", 
 androidx-compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compiler" }
 androidx-compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "runtime" }
 androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "ui" }
+
+mohamedrejeb-ksoup-html = { module = "com.mohamedrejeb.ksoup:ksoup-html", version.ref = "ksoup" }
 
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
