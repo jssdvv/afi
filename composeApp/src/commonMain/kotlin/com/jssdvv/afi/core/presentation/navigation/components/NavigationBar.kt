@@ -1,4 +1,4 @@
-package com.jssdvv.afi.presentation.navigation
+package com.jssdvv.afi.core.presentation.navigation.components
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -14,6 +14,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.navigator.tab.TabNavigator
+import com.jssdvv.afi.core.presentation.navigation.NavigationTabs
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 

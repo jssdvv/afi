@@ -17,8 +17,8 @@ import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.jssdvv.afi.MR
+import com.jssdvv.afi.core.presentation.navigation.LocalContentPadding
 import com.jssdvv.afi.directory.presentation.states.DirectoryTabModel
-import com.jssdvv.afi.presentation.navigation.LocalContentPadding
 import dev.icerock.moko.resources.compose.stringResource
 import io.ktor.client.plugins.RedirectResponseException
 import kotlinx.coroutines.launch

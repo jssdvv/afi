@@ -1,4 +1,4 @@
-package com.jssdvv.afi.presentation.features.maps
+package com.jssdvv.afi.maps.presentation.states
 
 import cafe.adriel.voyager.core.model.ScreenModel
 

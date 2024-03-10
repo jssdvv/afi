@@ -1,4 +1,4 @@
-package com.jssdvv.afi.presentation.features.scanner
+package com.jssdvv.afi.scanner.presentation.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.jssdvv.afi.MR
-import com.jssdvv.afi.presentation.navigation.LocalContentPadding
+import com.jssdvv.afi.core.presentation.navigation.LocalContentPadding
 import dev.icerock.moko.resources.compose.stringResource
 
 class ScannerTab : Tab {

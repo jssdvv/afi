@@ -1,4 +1,4 @@
-package com.jssdvv.afi.presentation.features.scanner
+package com.jssdvv.afi.scanner.presentation.states
 
 import cafe.adriel.voyager.core.model.ScreenModel
 
