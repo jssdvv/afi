@@ -37,6 +37,7 @@ sqldelight = "2.0.1"
 
 # Moko
 resources = "0.23.0"
+permissions = "0.17.0"
 
 # Decompose
 decompose = "2.2.2"
@@ -121,6 +122,9 @@ cashapp-sqldelight-android-driver = { module = "app.cash.sqldelight:android-driv
 icerock-moko-resources = { module = "dev.icerock.moko:resources", version.ref = "resources" }
 icerock-moko-resources-test = { module = "dev.icerock.moko:resources-test", version.ref = "resources" }
 icerock-moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "resources" }
+icerock-moko-permissions = { module = "dev.icerock.moko:permissions", version.ref = "permissions" }
+icerock-moko-permissions-test = { module = "dev.icerock.moko:permissions-test", version.ref = "permissions" }
+icerock-moko-permissions-compose = { module = "dev.icerock.moko:permissions-compose", version.ref = "permissions" }
 
 # Google ML Kit
 google-mlkit-image-labeling = { module = "com.google.mlkit:image-labeling", version.ref = "image-labeling" }
