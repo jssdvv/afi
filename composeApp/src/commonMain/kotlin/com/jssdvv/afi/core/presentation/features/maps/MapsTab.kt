@@ -1,6 +1,6 @@
 package com.jssdvv.afi.presentation.features.maps
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,11 +29,11 @@ class MapsTab : Tab {
     @Composable
     override fun Content() {
         val paddingValues = LocalContentPadding.current
-        Box(
+        Column(
             modifier = Modifier
                 .padding(paddingValues.value)
         ) {
-            Text("Pantalla formatos")
+            Text("Pantalla mapas")
         }
     }
 }

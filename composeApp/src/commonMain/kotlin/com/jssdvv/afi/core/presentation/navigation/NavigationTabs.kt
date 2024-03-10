@@ -2,7 +2,7 @@ package com.jssdvv.afi.presentation.navigation
 
 import cafe.adriel.voyager.navigator.tab.Tab
 import com.jssdvv.afi.MR
-import com.jssdvv.afi.presentation.features.directory.DirectoryTab
+import com.jssdvv.afi.directory.presentation.screens.DirectoryTab
 import com.jssdvv.afi.presentation.features.formats.FormatsTab
 import com.jssdvv.afi.presentation.features.maps.MapsTab
 import com.jssdvv.afi.presentation.features.scanner.ScannerTab

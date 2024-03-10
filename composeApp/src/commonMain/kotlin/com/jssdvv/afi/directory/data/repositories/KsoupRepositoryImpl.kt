@@ -1,6 +1,6 @@
-package com.jssdvv.afi.data.repositories
+package com.jssdvv.afi.directory.data.repositories
 
-import com.jssdvv.afi.domain.repositories.KsoupRepository
+import com.jssdvv.afi.directory.domain.repositories.KsoupRepository
 import com.mohamedrejeb.ksoup.html.parser.KsoupHtmlHandler
 import com.mohamedrejeb.ksoup.html.parser.KsoupHtmlOptions
 import com.mohamedrejeb.ksoup.html.parser.KsoupHtmlParser

@@ -1,4 +1,4 @@
-package com.jssdvv.afi.domain.repositories
+package com.jssdvv.afi.directory.domain.repositories
 
 interface KsoupRepository {
     fun parseHtml(html: String)

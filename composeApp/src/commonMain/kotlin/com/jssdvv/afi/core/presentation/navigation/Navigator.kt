@@ -1,7 +1,6 @@
 package com.jssdvv.afi.presentation.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -14,6 +13,7 @@ import cafe.adriel.voyager.navigator.tab.TabNavigator
 
 
 val LocalContentPadding = compositionLocalOf { mutableStateOf(PaddingValues()) }
+
 @Composable
 fun Navigator() {
     val localPaddingValues = remember { mutableStateOf(PaddingValues()) }
@@ -25,7 +25,7 @@ fun Navigator() {
     )
     CompositionLocalProvider(
         LocalContentPadding provides localPaddingValues
-    ){
+    ) {
         TabNavigator(
             navigationItems.first().tab
         ) { tabNavigator ->
