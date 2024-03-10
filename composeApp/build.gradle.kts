@@ -60,6 +60,9 @@ kotlin {
                 //HTTP Client
                 implementation(libs.ktor.client.core)
 
+                //HTML Parser
+                implementation(libs.mohamedrejeb.ksoup.html)
+
                 //Serialization
                 implementation(libs.jetbrains.kotlinx.serialization.json)
 
