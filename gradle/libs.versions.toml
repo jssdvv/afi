@@ -5,12 +5,12 @@ android-targetSdk = "34"
 android-compileSdk = "34"
 
 # Jetbrains
-kotlin = "1.9.22"
+kotlin = "1.9.23"
 kotlinx-coroutines = "1.7.3"
 kotlinx-serialization = "1.6.0"
 
 # Androidx
-camera = "1.3.1"
+camera = "1.3.2"
 compiler = "1.5.10"
 core-ktx = "1.12.0"
 lifecycle = "2.7.0"
@@ -50,9 +50,10 @@ barcode-scanning = "17.2.0"
 digital-ink-recognition = "18.1.0"
 
 # Plugins
-compose-plugin = "1.5.12"
+compose-plugin = "1.6.1"
+
 cocoapods-plugin = "1.9.22"
-android-gradle-plugin = "8.3.0"
+android-gradle-plugin = "8.2.2"
 
 [libraries]
 # Jetbrains Kotlin
@@ -117,6 +118,7 @@ arkivanov-decompose-extensions-compose-jetbrains = { module = "com.arkivanov.dec
 cashapp-sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 cashapp-sqldelight-sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
 cashapp-sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
+cashapp-sqldelight-coroutines-extensions = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
 
 # Icerock MOKO
 icerock-moko-resources = { module = "dev.icerock.moko:resources", version.ref = "resources" }
