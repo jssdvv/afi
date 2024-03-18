@@ -23,6 +23,7 @@ kotlin {
         }
     }
 
+    task("testClasses")
     listOf(
         iosX64(),
         iosArm64(),
@@ -46,7 +47,6 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 //Kotlin Multiplatform Compose
-                @OptIn(ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
                 implementation(compose.foundation)
                 implementation(compose.material3)
@@ -56,6 +56,9 @@ kotlin {
 
                 //Coroutines
                 implementation(libs.jetbrains.kotlinx.coroutines.core)
+
+                //SQLDelight Extensions
+                implementation(libs.cashapp.sqldelight.coroutines.extensions)
 
                 //HTTP Client
                 implementation(libs.ktor.client.core)
@@ -84,11 +87,21 @@ kotlin {
                 implementation(libs.androidx.compose.ui.tooling.preview)
                 implementation(libs.androidx.activity.compose)
 
+                //Compose
+                implementation(project.dependencies.platform(libs.androidx.compose.bom))
+                implementation(libs.bundles.androidx.compose)
+
                 //HTTP Client
                 implementation(libs.ktor.client.okhttp)
 
                 //Databases
                 implementation(libs.cashapp.sqldelight.android.driver)
+
+                //CameraX
+                implementation(libs.bundles.androidx.camera)
+
+                //MLKitVision
+                implementation(libs.bundles.google.mlkit)
             }
         }
         val iosX64Main by getting
@@ -160,7 +173,7 @@ multiplatformResources {
 
 sqldelight {
     databases {
-        create("Database") {
+        create("DirectoryDatabase") {
             packageName.set("com.jssdvv.afi")
         }
     }
