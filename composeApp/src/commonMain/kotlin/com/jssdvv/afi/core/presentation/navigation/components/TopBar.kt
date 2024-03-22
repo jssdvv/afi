@@ -4,13 +4,15 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import com.jssdvv.afi.MR
-import dev.icerock.moko.resources.compose.stringResource
+import com.jssdvv.afi.composeapp.generated.resources.Res
+import com.jssdvv.afi.composeapp.generated.resources.app_title
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.stringResource
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalResourceApi::class)
 @Composable
 fun TopBar() {
     TopAppBar(
-        title = { Text(stringResource(MR.strings.app_title)) }
+        title = { Text(stringResource(Res.string.app_title)) }
     )
 }
