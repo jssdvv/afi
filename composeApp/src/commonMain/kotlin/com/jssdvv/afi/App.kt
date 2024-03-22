@@ -6,7 +6,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.jssdvv.afi.core.presentation.navigation.Navigator
-import com.jssdvv.afi.presentation.theme.Theme
+import com.jssdvv.afi.core.presentation.theme.Theme
 
 @Composable
 fun App() {
