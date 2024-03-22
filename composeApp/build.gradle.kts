@@ -87,6 +87,9 @@ kotlin {
                 implementation(libs.androidx.compose.ui.tooling.preview)
                 implementation(libs.androidx.activity.compose)
 
+                //Constraint Layout Compose
+                implementation(libs.androidx.constraintlayout.compose)
+
                 //Compose
                 implementation(project.dependencies.platform(libs.androidx.compose.bom))
                 implementation(libs.bundles.androidx.compose)

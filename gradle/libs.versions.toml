@@ -17,6 +17,7 @@ lifecycle = "2.7.0"
 navigation = "2.7.7"
 compose-bom = "2024.02.02"
 espresso-core = "3.5.1"
+constraintlayout = "1.0.1"
 activity-compose = "1.8.2"
 androidx-test-ext-junit = "1.1.5"
 
@@ -51,9 +52,8 @@ digital-ink-recognition = "18.1.0"
 
 # Plugins
 compose-plugin = "1.6.1"
-
 cocoapods-plugin = "1.9.22"
-android-gradle-plugin = "8.2.2"
+android-gradle-plugin = "8.3.1"
 
 [libraries]
 # Jetbrains Kotlin
@@ -67,6 +67,9 @@ jetbrains-kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx
 
 # Androidx Activity
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
+
+# Androidx Constraint Layout
+androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayout" }
 
 # Androidx Compose
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
