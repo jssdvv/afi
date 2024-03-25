@@ -28,9 +28,7 @@ fun NavigationBar(
     NavigationBar(
         modifier = Modifier,
         containerColor = MaterialTheme.colorScheme.surface,
-        tonalElevation = NavigationBarDefaults.Elevation,
         contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-        windowInsets = NavigationBarDefaults.windowInsets
     ) {
         var selectedItem by rememberSaveable { mutableStateOf(0) }
         navigationItems.forEachIndexed { index, navigationItem ->
