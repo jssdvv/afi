@@ -1,6 +1,3 @@
-import dev.icerock.gradle.MRVisibility
-import org.jetbrains.compose.ExperimentalComposeLibrary
-
 plugins {
     alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
     alias(libs.plugins.jetbrains.kotlin.native.cocoapods)
@@ -8,7 +5,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.cashapp.sqldelight)
-    alias(libs.plugins.icerock.mobile.multiplatform.resources)
 }
 
 group = "com.jssdvv.afi"
@@ -22,7 +18,6 @@ kotlin {
             }
         }
     }
-
     task("testClasses")
     listOf(
         iosX64(),
@@ -35,18 +30,16 @@ kotlin {
             export(libs.icerock.moko.resources.compose)
         }
     }
-
     cocoapods {
         summary = "Compose Multiplatform App"
         homepage = "https://github.com/jssdvv/AFI"
 
         ios.deploymentTarget = "13.5"
     }
-
     sourceSets {
         val commonMain by getting {
             dependencies {
-                //Kotlin Multiplatform Compose
+                // Kotlin Multiplatform Compose
                 implementation(compose.components.resources)
                 implementation(compose.foundation)
                 implementation(compose.material3)
@@ -54,56 +47,57 @@ kotlin {
                 implementation(compose.runtime)
                 implementation(compose.ui)
 
-                //Coroutines
+                // Coroutines
                 implementation(libs.jetbrains.kotlinx.coroutines.core)
 
-                //SQLDelight Extensions
+                // SQLDelight Extensions
                 implementation(libs.cashapp.sqldelight.coroutines.extensions)
 
-                //HTTP Client
+                // HTTP Client
                 implementation(libs.ktor.client.core)
 
-                //HTML Parser
+                // HTML Parser
                 implementation(libs.mohamedrejeb.ksoup.html)
 
-                //Serialization
+                // Serialization
                 implementation(libs.jetbrains.kotlinx.serialization.json)
 
-                //Navigation
+                // Navigation
                 implementation(libs.adrielcafe.voyager.koin)
                 implementation(libs.adrielcafe.voyager.navigator)
                 implementation(libs.adrielcafe.voyager.transitions)
                 implementation(libs.adrielcafe.voyager.screenmodel)
                 implementation(libs.adrielcafe.voyager.tabnavigator)
 
-                //Resources Management
-                implementation(libs.icerock.moko.resources.compose)
+                // Permissions
+                implementation(libs.icerock.moko.permissions.compose)
+                implementation(libs.icerock.moko.permissions.test)
             }
         }
         val androidMain by getting {
             dependsOn(commonMain)
             dependencies {
-                //AndroidX
+                // AndroidX
                 implementation(libs.androidx.compose.ui.tooling.preview)
                 implementation(libs.androidx.activity.compose)
 
-                //Constraint Layout Compose
+                // Constraint Layout Compose
                 implementation(libs.androidx.constraintlayout.compose)
 
-                //Compose
+                // Compose
                 implementation(project.dependencies.platform(libs.androidx.compose.bom))
                 implementation(libs.bundles.androidx.compose)
 
-                //HTTP Client
+                // HTTP Client
                 implementation(libs.ktor.client.okhttp)
 
-                //Databases
+                // Databases
                 implementation(libs.cashapp.sqldelight.android.driver)
 
-                //CameraX
+                // CameraX
                 implementation(libs.bundles.androidx.camera)
 
-                //MLKitVision
+                // MLKitVision
                 implementation(libs.bundles.google.mlkit)
             }
         }
@@ -116,10 +110,10 @@ kotlin {
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
             dependencies {
-                //HTTP Client
+                // HTTP Client
                 implementation(libs.ktor.client.darwin)
 
-                //Databases
+                // Databases
                 implementation(libs.cashapp.sqldelight.native.driver)
             }
         }
@@ -132,7 +126,7 @@ android {
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
-    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
+    sourceSets["main"].resources.srcDirs("src/commonMain/composeResources")
 
     defaultConfig {
         applicationId = "com.jssdvv.afi"
@@ -164,14 +158,6 @@ android {
     dependencies {
         debugImplementation(libs.androidx.compose.ui.tooling)
     }
-}
-
-multiplatformResources {
-    multiplatformResourcesPackage = "com.jssdvv.afi"
-    multiplatformResourcesClassName = "MR"
-    multiplatformResourcesVisibility = MRVisibility.Public
-    iosBaseLocalizationRegion = "en"
-    multiplatformResourcesSourceSet = "commonMain"
 }
 
 sqldelight {
