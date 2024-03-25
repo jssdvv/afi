@@ -1,7 +1,6 @@
 package com.jssdvv.afi.core.presentation.navigation
 
 import cafe.adriel.voyager.navigator.tab.Tab
-import com.jssdvv.afi.MR
 import com.jssdvv.afi.composeapp.generated.resources.Res
 import com.jssdvv.afi.composeapp.generated.resources.directory_filled
 import com.jssdvv.afi.composeapp.generated.resources.directory_outlined
@@ -31,38 +30,38 @@ sealed class NavigationTabs @OptIn(ExperimentalResourceApi::class) constructor(
     val index: UShort
 ) {
     @OptIn(ExperimentalResourceApi::class)
-    data object ScannerTab : NavigationTabs(
+    data object Scanner : NavigationTabs(
         title = Res.string.scanner_tab_title,
-        inactiveIcon = Res.drawable.scanner_outlined,//MR.images.scanner_outlined,
+        inactiveIcon = Res.drawable.scanner_outlined,
         activeIcon = Res.drawable.scanner_filled,
-        tab = ScannerTab(),
+        tab = ScannerTab,
         index = 0u
     )
 
     @OptIn(ExperimentalResourceApi::class)
-    data object FormatsTab : NavigationTabs(
+    data object Formats : NavigationTabs(
         title = Res.string.formats_tab_title,
         inactiveIcon = Res.drawable.formats_outlined,
         activeIcon = Res.drawable.formats_filled,
-        tab = FormatsTab(),
+        tab = FormatsTab,
         index = 1u
     )
 
     @OptIn(ExperimentalResourceApi::class)
-    data object DirectoryTab : NavigationTabs(
+    data object Directory : NavigationTabs(
         title = Res.string.directory_tab_title,
         inactiveIcon = Res.drawable.directory_outlined,
         activeIcon = Res.drawable.directory_filled,
-        tab = DirectoryTab(),
+        tab = DirectoryTab,
         index = 2u
     )
 
     @OptIn(ExperimentalResourceApi::class)
-    data object MapsTab : NavigationTabs(
+    data object Maps : NavigationTabs(
         title = Res.string.maps_tab_title,
         inactiveIcon = Res.drawable.maps_outlined,
         activeIcon = Res.drawable.maps_filled,
-        tab = MapsTab(),
+        tab = MapsTab,
         index = 3u
     )
 }
