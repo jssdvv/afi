@@ -6,7 +6,6 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import com.jssdvv.afi.core.presentation.theme.typography.Hum521BTTypography
-import com.jssdvv.afi.presentation.theme.Shapes
 
 private val darkColorScheme = darkColorScheme(
     primary = Green80,

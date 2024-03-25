@@ -1,4 +1,4 @@
-package com.jssdvv.afi.presentation.theme
+package com.jssdvv.afi.core.presentation.theme
 
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Shapes
