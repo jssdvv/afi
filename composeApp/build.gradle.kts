@@ -50,6 +50,11 @@ kotlin {
                 // Coroutines
                 implementation(libs.jetbrains.kotlinx.coroutines.core)
 
+                // Dependencies Injection
+                implementation(project.dependencies.platform(libs.insert.koin.bom))
+                implementation(libs.insert.koin.compose)
+                implementation(libs.insert.koin.core)
+
                 // SQLDelight Extensions
                 implementation(libs.cashapp.sqldelight.coroutines.extensions)
 
@@ -87,6 +92,11 @@ kotlin {
                 // Compose
                 implementation(project.dependencies.platform(libs.androidx.compose.bom))
                 implementation(libs.bundles.androidx.compose)
+
+                // Dependencies Injection
+                implementation(project.dependencies.platform(libs.insert.koin.bom))
+                implementation(libs.insert.koin.android)
+                implementation(libs.insert.koin.core)
 
                 // HTTP Client
                 implementation(libs.ktor.client.okhttp)

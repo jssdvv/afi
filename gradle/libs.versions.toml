@@ -28,7 +28,7 @@ ksoup = "0.3.1"
 ktor = "2.3.7"
 
 # Koin
-koin = "3.4.3"
+koin-bom = "3.5.1"
 
 # Voyager
 voyager = "1.0.0"
@@ -36,7 +36,7 @@ voyager = "1.0.0"
 # SQLDelight
 sqldelight = "2.0.1"
 
-# Moko
+# MOKO
 resources = "0.23.0"
 permissions = "0.17.0"
 
@@ -79,10 +79,10 @@ androidx-compose-compiler = { module = "androidx.compose.compiler:compiler", ver
 androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
 androidx-compose-animation = { module = "androidx.compose.animation:animation" }
 androidx-compose-foundation = { module = "androidx.compose.foundation:foundation" }
-androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling"}
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 androidx-compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
-androidx-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest"}
+androidx-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 
 # Androidx Camera
 androidx-camera-core = { module = "androidx.camera:camera-core", version.ref = "camera" }
@@ -101,9 +101,13 @@ ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "kto
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 
 # Insert Koin
-insert-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
-insert-koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
-insert-koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+insert-koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
+insert-koin-core = { module = "io.insert-koin:koin-core" }
+insert-koin-test = { module = "io.insert-koin:koin-test" }
+insert-koin-android = { module = "io.insert-koin:koin-android" }
+insert-koin-compose = { module = "io.insert-koin:koin-compose" }
+insert-koin-android-compose = { module = "io.insert-koin:koin-androidx-compose" }
+
 
 # Adrielcafe Voyager
 adrielcafe-voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
