@@ -26,7 +26,7 @@ data class DetailsScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             ElementSticker(
-                text = "123456",
+                text = barcode,
                 padding = 10.dp,
                 height = 120.dp,
                 backgroundColor = Color.White
