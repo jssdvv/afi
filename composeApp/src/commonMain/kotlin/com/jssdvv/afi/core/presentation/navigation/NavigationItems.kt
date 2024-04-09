@@ -22,7 +22,7 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
-sealed class NavigationTabs @OptIn(ExperimentalResourceApi::class) constructor(
+sealed class NavigationItems @OptIn(ExperimentalResourceApi::class) constructor(
     val title: StringResource,
     val inactiveIcon: DrawableResource,
     val activeIcon: DrawableResource,
@@ -30,7 +30,7 @@ sealed class NavigationTabs @OptIn(ExperimentalResourceApi::class) constructor(
     val index: UShort
 ) {
     @OptIn(ExperimentalResourceApi::class)
-    data object Scanner : NavigationTabs(
+    data object ScannerItem : NavigationItems(
         title = Res.string.scanner_tab_title,
         inactiveIcon = Res.drawable.scanner_outlined,
         activeIcon = Res.drawable.scanner_filled,
@@ -39,29 +39,29 @@ sealed class NavigationTabs @OptIn(ExperimentalResourceApi::class) constructor(
     )
 
     @OptIn(ExperimentalResourceApi::class)
-    data object Formats : NavigationTabs(
+    data object FormatsItem : NavigationItems(
         title = Res.string.formats_tab_title,
         inactiveIcon = Res.drawable.formats_outlined,
         activeIcon = Res.drawable.formats_filled,
-        tab = FormatsTab,
+        tab = FormatsTab(),
         index = 1u
     )
 
     @OptIn(ExperimentalResourceApi::class)
-    data object Directory : NavigationTabs(
+    data object DirectoryItem : NavigationItems(
         title = Res.string.directory_tab_title,
         inactiveIcon = Res.drawable.directory_outlined,
         activeIcon = Res.drawable.directory_filled,
-        tab = DirectoryTab,
+        tab = DirectoryTab(),
         index = 2u
     )
 
     @OptIn(ExperimentalResourceApi::class)
-    data object Maps : NavigationTabs(
+    data object MapsItem : NavigationItems(
         title = Res.string.maps_tab_title,
         inactiveIcon = Res.drawable.maps_outlined,
         activeIcon = Res.drawable.maps_filled,
-        tab = MapsTab,
+        tab = MapsTab(),
         index = 3u
     )
 }

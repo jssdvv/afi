@@ -3,7 +3,6 @@ package com.jssdvv.afi.core.presentation.navigation.components
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
@@ -14,7 +13,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.navigator.tab.TabNavigator
-import com.jssdvv.afi.core.presentation.navigation.NavigationTabs
+import com.jssdvv.afi.core.presentation.navigation.NavigationItems
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
@@ -23,7 +22,7 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 @Composable
 fun NavigationBar(
     tabNavigator: TabNavigator,
-    navigationItems: List<NavigationTabs>
+    navigationItems: List<NavigationItems>
 ) {
     NavigationBar(
         modifier = Modifier,

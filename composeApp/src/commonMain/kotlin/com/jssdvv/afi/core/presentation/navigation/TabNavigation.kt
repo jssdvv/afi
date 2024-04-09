@@ -21,10 +21,10 @@ fun TabNavigation() {
     val localPaddingValues = remember { mutableStateOf(PaddingValues()) }
     val localNavigationBarShown = remember { mutableStateOf(true) }
     val navigationTabs = listOf(
-        NavigationTabs.Scanner,
-        NavigationTabs.Formats,
-        NavigationTabs.Directory,
-        NavigationTabs.Maps
+        NavigationItems.ScannerItem,
+        NavigationItems.FormatsItem,
+        NavigationItems.DirectoryItem,
+        NavigationItems.MapsItem
     )
     CompositionLocalProvider(
         LocalPaddingValues provides localPaddingValues,
