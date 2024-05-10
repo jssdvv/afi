@@ -6,6 +6,5 @@ import kotlinx.coroutines.flow.StateFlow
 @Composable
 expect fun CameraPreview(
     isTorchEnabled: Boolean,
-    isCameraFlipped: Boolean,
-    zoomRatio: Float
+    isCameraFlipped: Boolean
 )
