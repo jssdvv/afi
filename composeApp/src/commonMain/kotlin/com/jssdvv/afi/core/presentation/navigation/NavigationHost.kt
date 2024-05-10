@@ -1,30 +1,30 @@
 package com.jssdvv.afi.core.presentation.navigation
 
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
+import com.jssdvv.afi.core.presentation.navigation.components.NavigationItems
 import com.jssdvv.afi.core.presentation.navigation.graphs.directoryNavGraph
 import com.jssdvv.afi.core.presentation.navigation.graphs.formatsNavGraph
 import com.jssdvv.afi.core.presentation.navigation.graphs.mapsNavGraph
 import com.jssdvv.afi.core.presentation.navigation.graphs.scannerNavGraph
 
-sealed class NavGraphRoutes(val route: String) {
-    data object Scanner : NavGraphRoutes("scannerGraph")
-    data object Directory : NavGraphRoutes("directoryGraph")
-    data object Formats : NavGraphRoutes("formatsGraph")
-    data object Maps : NavGraphRoutes("mapsGraph")
-}
-
 @Composable
-fun NavigationHost() {
-    val navController = rememberNavController()
+fun NavigationHost(
+    navController: NavHostController,
+    paddingValues: PaddingValues
+) {
     NavHost(
         navController = navController,
-        startDestination = NavGraphRoutes.Scanner.route,
+        startDestination = NavigationItems.ScannerItem.route,
+        modifier = Modifier.padding(paddingValues)
     ) {
         scannerNavGraph(navController)
-        directoryNavGraph(navController)
         formatsNavGraph(navController)
+        directoryNavGraph(navController)
         mapsNavGraph(navController)
     }
 }
