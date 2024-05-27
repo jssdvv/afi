@@ -1,10 +1,10 @@
 package com.jssdvv.afi.scanner.presentation.states
 
-import cafe.adriel.voyager.core.model.ScreenModel
+import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class CameraScreenModel : ScreenModel {
+class ScannerCameraViewModel : ViewModel() {
 
     private val _text = MutableStateFlow(String())
     private val _isTorchEnabled = MutableStateFlow(false)

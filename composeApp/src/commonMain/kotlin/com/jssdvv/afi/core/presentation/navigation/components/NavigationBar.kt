@@ -42,8 +42,6 @@ fun NavigationBar(
             NavigationBarItem(
                 selected = currentGraphRoute == navigationItem.route,
                 onClick = {
-                    println(navigationItem.route)
-                    println(navigationItem.title)
                     navController.navigate(navigationItem.route) {
                         navController.graph.findStartDestination().route?.let {
                             popUpTo(it) {
@@ -63,10 +61,7 @@ fun NavigationBar(
                     )
                 },
                 modifier = Modifier,
-                enabled = true,
-                label = { Text(stringResource(navigationItem.title)) },
-                alwaysShowLabel = true,
-                colors = NavigationBarItemDefaults.colors(),
+                label = { Text(stringResource(navigationItem.title)) }
             )
         }
     }
