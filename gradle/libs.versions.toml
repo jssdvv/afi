@@ -12,7 +12,7 @@ androidx-navigation-compose = "2.7.0-alpha03"
 androidx-lifecycle-viewmodel-compose = "2.8.0-beta02"
 
 # Androidx
-camera = "1.3.2"
+camera = "1.3.3"
 compiler = "1.5.10"
 core-ktx = "1.12.0"
 lifecycle = "2.7.0"
@@ -32,19 +32,11 @@ ktor = "2.3.7"
 # Koin
 koin-bom = "3.5.1"
 
-# Voyager
-voyager = "1.0.0"
-
 # SQLDelight
 sqldelight = "2.0.1"
 
 # MOKO
-resources = "0.23.0"
 permissions = "0.17.0"
-
-# Decompose
-decompose = "2.2.2"
-extensions-compose-jetbrains = "3.0.0-alpha01"
 
 # Google ML Kit
 image-labeling = "17.0.8"
@@ -114,19 +106,6 @@ insert-koin-android = { module = "io.insert-koin:koin-android" }
 insert-koin-compose = { module = "io.insert-koin:koin-compose" }
 insert-koin-android-compose = { module = "io.insert-koin:koin-androidx-compose" }
 
-
-# Adrielcafe Voyager
-adrielcafe-voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
-adrielcafe-voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
-adrielcafe-voyager-screenmodel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
-adrielcafe-voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
-adrielcafe-voyager-tabnavigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
-adrielcafe-voyager-bottomsheetnavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
-
-# Arkivanov Decompose
-arkivanov-decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
-arkivanov-decompose-extensions-compose-jetbrains = { module = "com.arkivanov.decompose:extensions-compose-jetbrains", version.ref = "extensions-compose-jetbrains" }
-
 # Cashapp SQLDelight
 cashapp-sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 cashapp-sqldelight-sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
@@ -134,9 +113,6 @@ cashapp-sqldelight-android-driver = { module = "app.cash.sqldelight:android-driv
 cashapp-sqldelight-coroutines-extensions = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
 
 # Icerock MOKO
-icerock-moko-resources = { module = "dev.icerock.moko:resources", version.ref = "resources" }
-icerock-moko-resources-test = { module = "dev.icerock.moko:resources-test", version.ref = "resources" }
-icerock-moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "resources" }
 icerock-moko-permissions = { module = "dev.icerock.moko:permissions", version.ref = "permissions" }
 icerock-moko-permissions-test = { module = "dev.icerock.moko:permissions-test", version.ref = "permissions" }
 icerock-moko-permissions-compose = { module = "dev.icerock.moko:permissions-compose", version.ref = "permissions" }
@@ -148,7 +124,6 @@ google-mlkit-barcode-scanning = { module = "com.google.mlkit:barcode-scanning", 
 google-mlkit-digital-ink-recognition = { module = "com.google.mlkit:digital-ink-recognition", version.ref = "digital-ink-recognition" }
 
 [bundles]
-
 androidx-compose = [
     "androidx-compose-ui-tooling-preview",
     "androidx-compose-ui-tooling",
@@ -159,7 +134,6 @@ androidx-compose = [
     "androidx-compose-runtime",
     "androidx-compose-ui"
 ]
-
 androidx-camera = [
     "androidx-camera-extensions",
     "androidx-camera-lifecycle",
@@ -168,25 +142,10 @@ androidx-camera = [
     "androidx-camera-view",
     "androidx-camera-core"
 ]
-
-adrielcafe-voyager = [
-    "adrielcafe-voyager-transitions",
-    "adrielcafe-voyager-screenmodel",
-    "adrielcafe-voyager-navigator",
-    "adrielcafe-voyager-koin"
+icerock-moko-permissions = [
+    "icerock-moko-permissions-compose",
+    "icerock-moko-permissions-test"
 ]
-
-arkivanov-decompose = [
-    "arkivanov-decompose-extensions-compose-jetbrains",
-    "arkivanov-decompose"
-]
-
-icerock-moko = [
-    "icerock-moko-resources-compose",
-    "icerock-moko-resources-test",
-    "icerock-moko-resources"
-]
-
 google-mlkit = [
     "google-mlkit-digital-ink-recognition",
     "google-mlkit-barcode-scanning",
@@ -207,6 +166,3 @@ jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.seri
 
 # Cashapp SQLDelight
 cashapp-sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
-
-# Icerock MOKO
-icerock-mobile-multiplatform-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "resources" }
