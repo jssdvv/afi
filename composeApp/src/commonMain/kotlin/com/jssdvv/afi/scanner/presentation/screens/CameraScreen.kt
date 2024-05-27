@@ -13,11 +13,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.Slider
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -37,21 +35,19 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.jssdvv.afi.composeapp.generated.resources.Res
 import com.jssdvv.afi.composeapp.generated.resources.close_outlined
 import com.jssdvv.afi.composeapp.generated.resources.done_outlined
-import com.jssdvv.afi.composeapp.generated.resources.flashlight_filled
-import com.jssdvv.afi.composeapp.generated.resources.flashlight_outlined
-import com.jssdvv.afi.composeapp.generated.resources.flip_camera_filled
 import com.jssdvv.afi.composeapp.generated.resources.flip_camera_outlined
-import com.jssdvv.afi.composeapp.generated.resources.zoom_in_outlined
-import com.jssdvv.afi.composeapp.generated.resources.zoom_out_outlined
+import com.jssdvv.afi.composeapp.generated.resources.torch_filled
+import com.jssdvv.afi.composeapp.generated.resources.torch_outlined
 import com.jssdvv.afi.core.presentation.navigation.LocalNavigationBarShown
 import com.jssdvv.afi.core.presentation.navigation.LocalPaddingValues
+import com.jssdvv.afi.core.presentation.theme.LocalTorchMode
 import com.jssdvv.afi.scanner.presentation.components.CameraPreview
 import com.jssdvv.afi.scanner.presentation.states.CameraScreenModel
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
 class CameraScreen : Screen {
-    @OptIn(ExperimentalResourceApi::class, ExperimentalMaterial3Api::class)
+    @OptIn(ExperimentalResourceApi::class)
     @Composable
     override fun Content() {
         val screenModel = rememberScreenModel { CameraScreenModel() }
@@ -60,9 +56,10 @@ class CameraScreen : Screen {
         LocalNavigationBarShown.current.value = showBar.value
 
         val text = screenModel.text.collectAsState()
-        val zoomRatio = screenModel.zoomRatio.collectAsState()
         val isTorchEnabled = screenModel.isTorchEnabled.collectAsState()
         val isCameraFlipped = screenModel.isCameraFlipped.collectAsState()
+        LocalTorchMode.current.value = if (isCameraFlipped.value) isTorchEnabled.value else false
+
 
         Column(
             modifier = Modifier.fillMaxSize().padding(LocalPaddingValues.current.value)
@@ -74,12 +71,17 @@ class CameraScreen : Screen {
                 CameraPreview(
                     isTorchEnabled = isTorchEnabled.value,
                     isCameraFlipped = isCameraFlipped.value,
-                    zoomRatio = zoomRatio.value
                 )
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(Color.Black.copy(alpha = 0.3f))
+                        .background(
+                            if (isCameraFlipped.value && isTorchEnabled.value) {
+                                Color.White
+                            } else {
+                                Color.Black.copy(alpha = 0.5f)
+                            }
+                        )
                         .padding(
                             horizontal = 10.dp,
                             vertical = 5.dp,
@@ -90,42 +92,17 @@ class CameraScreen : Screen {
                     IconButton(onClick = { screenModel.toggleTorch() }) {
                         Icon(
                             painter = painterResource(
-                                if (isTorchEnabled.value) Res.drawable.flashlight_filled else Res.drawable.flashlight_outlined
-                            ), contentDescription = null
+                                if (isTorchEnabled.value) Res.drawable.torch_filled else Res.drawable.torch_outlined
+                            ),
+                            contentDescription = null,
+                            tint = if (isCameraFlipped.value && isTorchEnabled.value) Color.Black else Color.White
                         )
                     }
                     IconButton(onClick = { screenModel.toggleCamera() }) {
                         Icon(
-                            painter = painterResource(
-                                if (isCameraFlipped.value) Res.drawable.flip_camera_filled else Res.drawable.flip_camera_outlined
-                            ), contentDescription = null
-                        )
-                    }
-                }
-                Row(
-                    modifier = Modifier.fillMaxWidth().background(Color.Black.copy(alpha = 0.3f))
-                        .padding(
-                            horizontal = 10.dp,
-                            vertical = 5.dp,
-                        ).align(Alignment.BottomCenter),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    IconButton(onClick = { screenModel.setZoomRatio(0f) }) {
-                        Icon(
-                            painter = painterResource(Res.drawable.zoom_out_outlined),
-                            contentDescription = null
-                        )
-                    }
-                    Slider(modifier = Modifier
-                        .padding(horizontal = 5.dp)
-                        .weight(1f),
-                        value = zoomRatio.value,
-                        onValueChange = screenModel::setZoomRatio,
-                        thumb = {})
-                    IconButton(onClick = { screenModel.setZoomRatio(1f) }) {
-                        Icon(
-                            painter = painterResource(Res.drawable.zoom_in_outlined),
-                            contentDescription = null
+                            painter = painterResource(Res.drawable.flip_camera_outlined),
+                            contentDescription = null,
+                            tint = if (isCameraFlipped.value && isTorchEnabled.value) Color.Black else Color.White
                         )
                     }
                 }

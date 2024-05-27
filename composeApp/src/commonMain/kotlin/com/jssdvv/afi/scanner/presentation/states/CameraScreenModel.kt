@@ -7,13 +7,11 @@ import kotlinx.coroutines.flow.asStateFlow
 class CameraScreenModel : ScreenModel {
 
     private val _text = MutableStateFlow(String())
-    private val _zoomRatio = MutableStateFlow(0f)
     private val _isTorchEnabled = MutableStateFlow(false)
     private val _isEditModeEnabled = MutableStateFlow(false)
     private val _isCameraFlipped = MutableStateFlow(false)
 
     val text = _text.asStateFlow()
-    val zoomRatio = _zoomRatio.asStateFlow()
     val isTorchEnabled = _isTorchEnabled.asStateFlow()
     val isEditModeEnabled = _isEditModeEnabled.asStateFlow()
     val isCameraFlipped = _isCameraFlipped.asStateFlow()
@@ -32,9 +30,5 @@ class CameraScreenModel : ScreenModel {
 
     fun toggleCamera() {
         _isCameraFlipped.value = !_isCameraFlipped.value
-    }
-
-    fun setZoomRatio(zoomRatio: Float) {
-        _zoomRatio.value = zoomRatio
     }
 }

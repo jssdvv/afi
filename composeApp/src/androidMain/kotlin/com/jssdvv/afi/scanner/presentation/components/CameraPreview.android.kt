@@ -19,15 +19,13 @@ import kotlinx.coroutines.flow.StateFlow
 @Composable
 actual fun CameraPreview(
     isTorchEnabled: Boolean,
-    isCameraFlipped: Boolean,
-    zoomRatio: Float
+    isCameraFlipped: Boolean
 ) {
     val localContext = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
     val lifecycleCameraController = remember { LifecycleCameraController(localContext) }.apply {
         cameraSelector = if (isCameraFlipped) CameraSelector.DEFAULT_FRONT_CAMERA else CameraSelector.DEFAULT_BACK_CAMERA
         enableTorch(isTorchEnabled)
-        setLinearZoom(zoomRatio)
     }
     AndroidView(
         modifier = Modifier.fillMaxSize(),

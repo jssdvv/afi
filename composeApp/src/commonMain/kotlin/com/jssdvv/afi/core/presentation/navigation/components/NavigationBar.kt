@@ -12,43 +12,55 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import cafe.adriel.voyager.navigator.tab.TabNavigator
-import com.jssdvv.afi.core.presentation.navigation.NavigationItems
+import androidx.navigation.NavController
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.compose.currentBackStackEntryAsState
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.koin.core.component.getScopeId
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun NavigationBar(
-    tabNavigator: TabNavigator,
-    navigationItems: List<NavigationItems>
+    navController: NavController
 ) {
     NavigationBar(
         modifier = Modifier,
         containerColor = MaterialTheme.colorScheme.surface,
         contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
     ) {
-        var selectedItem by rememberSaveable { mutableStateOf(0) }
-        navigationItems.forEachIndexed { index, navigationItem ->
+        val navigationItems = listOf(
+            NavigationItems.ScannerItem,
+            NavigationItems.FormatsItem,
+            NavigationItems.DirectoryItem,
+            NavigationItems.MapsItem
+        )
+        val backStackEntry by navController.currentBackStackEntryAsState()
+        val currentGraphRoute = backStackEntry?.destination?.parent?.route
+        navigationItems.forEach { navigationItem ->
             NavigationBarItem(
-                selected = tabNavigator.current == navigationItem.tab,
+                selected = currentGraphRoute == navigationItem.route,
                 onClick = {
-                    selectedItem = index
-                    tabNavigator.current = navigationItem.tab
+                    println(navigationItem.route)
+                    println(navigationItem.title)
+                    navController.navigate(navigationItem.route) {
+                        navController.graph.findStartDestination().route?.let {
+                            popUpTo(it) {
+                                inclusive = true
+                            }
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
                 },
                 icon = {
-                    if (selectedItem == index) {
-                        Icon(
-                            contentDescription = stringResource(navigationItem.title),
-                            painter = painterResource(navigationItem.activeIcon)
+                    Icon(
+                        contentDescription = stringResource(navigationItem.title),
+                        painter = painterResource(
+                            if (currentGraphRoute == navigationItem.route) navigationItem.activeIcon else navigationItem.inactiveIcon
                         )
-                    } else {
-                        Icon(
-                            contentDescription = stringResource(navigationItem.title),
-                            painter = painterResource(navigationItem.inactiveIcon)
-                        )
-                    }
+                    )
                 },
                 modifier = Modifier,
                 enabled = true,

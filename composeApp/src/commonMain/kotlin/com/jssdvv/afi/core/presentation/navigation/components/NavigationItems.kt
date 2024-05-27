@@ -1,6 +1,5 @@
-package com.jssdvv.afi.core.presentation.navigation
+package com.jssdvv.afi.core.presentation.navigation.components
 
-import cafe.adriel.voyager.navigator.tab.Tab
 import com.jssdvv.afi.composeapp.generated.resources.Res
 import com.jssdvv.afi.composeapp.generated.resources.directory_filled
 import com.jssdvv.afi.composeapp.generated.resources.directory_outlined
@@ -14,54 +13,52 @@ import com.jssdvv.afi.composeapp.generated.resources.maps_tab_title
 import com.jssdvv.afi.composeapp.generated.resources.scanner_filled
 import com.jssdvv.afi.composeapp.generated.resources.scanner_outlined
 import com.jssdvv.afi.composeapp.generated.resources.scanner_tab_title
-import com.jssdvv.afi.directory.presentation.screens.DirectoryTab
-import com.jssdvv.afi.formats.presentation.screens.FormatsTab
-import com.jssdvv.afi.maps.presentation.screens.MapsTab
-import com.jssdvv.afi.scanner.presentation.screens.ScannerTab
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
+sealed class NavGraphRoutes(val route: String) {
+    data object Scanner : NavGraphRoutes("scannerGraph")
+    data object Directory : NavGraphRoutes("directoryGraph")
+    data object Formats : NavGraphRoutes("formatsGraph")
+    data object Maps : NavGraphRoutes("mapsGraph")
+}
+
 sealed class NavigationItems @OptIn(ExperimentalResourceApi::class) constructor(
     val title: StringResource,
-    val inactiveIcon: DrawableResource,
+    val route: String,
     val activeIcon: DrawableResource,
-    val tab: Tab,
-    val index: UShort
+    val inactiveIcon: DrawableResource
 ) {
     @OptIn(ExperimentalResourceApi::class)
     data object ScannerItem : NavigationItems(
         title = Res.string.scanner_tab_title,
-        inactiveIcon = Res.drawable.scanner_outlined,
+        route = NavGraphRoutes.Scanner.route,
         activeIcon = Res.drawable.scanner_filled,
-        tab = ScannerTab,
-        index = 0u
+        inactiveIcon = Res.drawable.scanner_outlined
     )
 
     @OptIn(ExperimentalResourceApi::class)
     data object FormatsItem : NavigationItems(
         title = Res.string.formats_tab_title,
-        inactiveIcon = Res.drawable.formats_outlined,
+        route = NavGraphRoutes.Formats.route,
         activeIcon = Res.drawable.formats_filled,
-        tab = FormatsTab(),
-        index = 1u
+        inactiveIcon = Res.drawable.formats_outlined
     )
 
     @OptIn(ExperimentalResourceApi::class)
     data object DirectoryItem : NavigationItems(
         title = Res.string.directory_tab_title,
-        inactiveIcon = Res.drawable.directory_outlined,
+        route = NavGraphRoutes.Directory.route,
         activeIcon = Res.drawable.directory_filled,
-        tab = DirectoryTab(),
-        index = 2u
+        inactiveIcon = Res.drawable.directory_outlined
     )
 
     @OptIn(ExperimentalResourceApi::class)
     data object MapsItem : NavigationItems(
         title = Res.string.maps_tab_title,
-        inactiveIcon = Res.drawable.maps_outlined,
+        route = NavGraphRoutes.Maps.route,
         activeIcon = Res.drawable.maps_filled,
-        tab = MapsTab(),
-        index = 3u
+        inactiveIcon = Res.drawable.maps_outlined
     )
 }

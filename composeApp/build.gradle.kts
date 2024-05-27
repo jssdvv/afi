@@ -74,6 +74,10 @@ kotlin {
                 implementation(libs.adrielcafe.voyager.screenmodel)
                 implementation(libs.adrielcafe.voyager.tabnavigator)
 
+                //Jetbrains
+                implementation(libs.jetbrains.androidx.navigation.compose)
+                implementation(libs.jetbrains.androidx.lifecycle.viewmodel.compose)
+
                 // Permissions
                 implementation(libs.icerock.moko.permissions.compose)
                 implementation(libs.icerock.moko.permissions.test)
