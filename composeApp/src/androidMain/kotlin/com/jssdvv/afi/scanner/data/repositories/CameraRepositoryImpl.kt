@@ -26,7 +26,7 @@ class CameraRepositoryImpl : CameraRepository {
             isPinchToZoomEnabled = false
             previewTargetSize = CameraController.OutputSize(1)
             isTapToFocusEnabled = true
-            enableTorch(false)
+            //enableTorch(false)
             setImageAnalysisAnalyzer(
                 ContextCompat.getMainExecutor(context),
                 analyzer

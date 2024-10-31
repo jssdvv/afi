@@ -5,6 +5,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.cashapp.sqldelight)
+    id("com.google.gms.google-services")
+    alias(libs.plugins.composeCompiler)
 }
 
 group = "com.jssdvv.afi"
@@ -14,7 +16,7 @@ kotlin {
     androidTarget {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = "17"
             }
         }
     }
@@ -30,8 +32,8 @@ kotlin {
         }
     }
     cocoapods {
-        summary = "Compose Multiplatform App"
-        homepage = "https://github.com/jssdvv/AFI"
+        summary = "AFI"
+        homepage = "https://github.com/jssdvv/afi"
         ios.deploymentTarget = "13.5"
     }
     sourceSets {
@@ -71,6 +73,10 @@ kotlin {
 
                 // Permissions
                 implementation(libs.bundles.icerock.moko.permissions)
+
+                implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
+
+                implementation("dev.gitlive:firebase-firestore:2.1.0")
             }
         }
         val androidMain by getting {
@@ -103,6 +109,8 @@ kotlin {
 
                 // MLKitVision
                 implementation(libs.bundles.google.mlkit)
+
+                implementation("com.google.firebase:firebase-firestore-ktx")
             }
         }
         val iosX64Main by getting
@@ -142,9 +150,6 @@ android {
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compiler.get()
-    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -156,8 +161,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     dependencies {
         debugImplementation(libs.androidx.compose.ui.tooling)

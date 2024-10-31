@@ -5,22 +5,22 @@ android-targetSdk = "34"
 android-compileSdk = "34"
 
 # Jetbrains
-kotlin = "1.9.23"
+kotlin = "2.0.21"
 kotlinx-coroutines = "1.7.3"
 kotlinx-serialization = "1.6.0"
 androidx-navigation-compose = "2.7.0-alpha03"
 androidx-lifecycle-viewmodel-compose = "2.8.0-beta02"
 
 # Androidx
-camera = "1.3.3"
+camera = "1.4.0"
 compiler = "1.5.10"
 core-ktx = "1.12.0"
 lifecycle = "2.7.0"
 navigation = "2.7.7"
-compose-bom = "2024.02.02"
+compose-bom = "2024.10.01"
 espresso-core = "3.5.1"
-constraintlayout = "1.0.1"
-activity-compose = "1.8.2"
+constraintlayout = "1.1.0"
+activity-compose = "1.9.3"
 androidx-test-ext-junit = "1.1.5"
 
 # Ksoup
@@ -45,9 +45,9 @@ barcode-scanning = "17.2.0"
 digital-ink-recognition = "18.1.0"
 
 # Plugins
-compose-plugin = "1.6.1"
+compose-plugin = "1.6.11"
 cocoapods-plugin = "1.9.22"
-android-gradle-plugin = "8.3.1"
+android-gradle-plugin = "8.5.2"
 
 [libraries]
 # Jetbrains Kotlin
@@ -166,3 +166,5 @@ jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.seri
 
 # Cashapp SQLDelight
 cashapp-sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
+
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

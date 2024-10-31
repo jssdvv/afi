@@ -36,7 +36,7 @@ actual fun CameraPreview(
     }.apply {
         cameraSelector =
             if (isCameraFlipped) CameraSelector.DEFAULT_FRONT_CAMERA else CameraSelector.DEFAULT_BACK_CAMERA
-        enableTorch(isTorchEnabled)
+        //enableTorch(isTorchEnabled)
     }
     AndroidView(
         modifier = Modifier.fillMaxSize(),
