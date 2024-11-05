@@ -1,9 +1,13 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
+    alias(libs.plugins.jetbrains.kotlin.multiplatform)
+    alias(libs.plugins.jetbrains.kotlin.compose.compiler)
     alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
     alias(libs.plugins.jetbrains.kotlin.native.cocoapods)
-    alias(libs.plugins.jetbrains.kotlin.multiplatform)
-    alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.android.application)
     alias(libs.plugins.cashapp.sqldelight)
 }
 
@@ -12,10 +16,9 @@ version = "1.0"
 
 kotlin {
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
         }
     }
     task("testClasses")
@@ -30,14 +33,14 @@ kotlin {
         }
     }
     cocoapods {
-        summary = "Compose Multiplatform App"
-        homepage = "https://github.com/jssdvv/AFI"
+        summary = "AFI"
+        homepage = "https://github.com/jssdvv/afi"
         ios.deploymentTarget = "13.5"
     }
     sourceSets {
         val commonMain by getting {
             dependencies {
-                // Kotlin Multiplatform Compose
+                // Compose
                 implementation(compose.components.resources)
                 implementation(compose.foundation)
                 implementation(compose.material3)
@@ -45,29 +48,29 @@ kotlin {
                 implementation(compose.runtime)
                 implementation(compose.ui)
 
-                // Coroutines
+                // Kotlin
                 implementation(libs.jetbrains.kotlinx.coroutines.core)
-
-                // Dependencies Injection
-                implementation(project.dependencies.platform(libs.insert.koin.bom))
-                implementation(libs.insert.koin.compose)
-                implementation(libs.insert.koin.core)
-
-                // SQLDelight Extensions
-                implementation(libs.cashapp.sqldelight.coroutines.extensions)
-
-                // HTTP Client
-                implementation(libs.ktor.client.core)
-
-                // HTML Parser
-                implementation(libs.mohamedrejeb.ksoup.html)
-
-                // Serialization
                 implementation(libs.jetbrains.kotlinx.serialization.json)
 
                 // Navigation
                 implementation(libs.jetbrains.androidx.navigation.compose)
                 implementation(libs.jetbrains.androidx.lifecycle.viewmodel.compose)
+
+                // HTTP Requests
+                implementation(libs.ktor.client.core)
+                implementation(libs.mohamedrejeb.ksoup.html)
+
+                // Dependency Injection
+                implementation(project.dependencies.platform(libs.insert.koin.bom))
+                implementation(libs.insert.koin.compose)
+                implementation(libs.insert.koin.core)
+
+                // Local Database
+                implementation(libs.cashapp.sqldelight.coroutines.extensions)
+
+                // External Database
+                implementation(project.dependencies.platform(libs.jan.tennert.supabase.bom))
+                implementation(libs.bundles.jan.tennert.supabase)
 
                 // Permissions
                 implementation(libs.bundles.icerock.moko.permissions)
@@ -76,32 +79,27 @@ kotlin {
         val androidMain by getting {
             dependsOn(commonMain)
             dependencies {
-                // AndroidX
-                implementation(libs.androidx.compose.ui.tooling.preview)
-                implementation(libs.androidx.activity.compose)
-
-                // Constraint Layout Compose
-                implementation(libs.androidx.constraintlayout.compose)
-
                 // Compose
+                implementation(libs.androidx.activity.compose)
+                implementation(libs.androidx.constraint.layout.compose)
                 implementation(project.dependencies.platform(libs.androidx.compose.bom))
                 implementation(libs.bundles.androidx.compose)
 
-                // Dependencies Injection
+                // Camera
+                implementation(libs.bundles.androidx.camera)
+
+                // HTTP Requests
+                implementation(libs.ktor.client.okhttp)
+
+                // Dependency Injection
                 implementation(project.dependencies.platform(libs.insert.koin.bom))
                 implementation(libs.insert.koin.android)
                 implementation(libs.insert.koin.core)
 
-                // HTTP Client
-                implementation(libs.ktor.client.okhttp)
-
-                // Databases
+                // Local Database
                 implementation(libs.cashapp.sqldelight.android.driver)
 
-                // CameraX
-                implementation(libs.bundles.androidx.camera)
-
-                // MLKitVision
+                // Google ML Kit
                 implementation(libs.bundles.google.mlkit)
             }
         }
@@ -114,10 +112,10 @@ kotlin {
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
             dependencies {
-                // HTTP Client
+                // HTTP Requests
                 implementation(libs.ktor.client.darwin)
 
-                // Databases
+                // Local Database
                 implementation(libs.cashapp.sqldelight.native.driver)
             }
         }
@@ -126,7 +124,7 @@ kotlin {
 
 android {
     namespace = "com.jssdvv.afi"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk = libs.versions.android.sdk.compile.get().toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
@@ -134,16 +132,13 @@ android {
 
     defaultConfig {
         applicationId = "com.jssdvv.afi"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        minSdk = libs.versions.android.sdk.min.get().toInt()
+        targetSdk = libs.versions.android.sdk.target.get().toInt()
         versionCode = 1
         versionName = "1.0"
     }
     buildFeatures {
         compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compiler.get()
     }
     packaging {
         resources {
@@ -156,8 +151,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     dependencies {
         debugImplementation(libs.androidx.compose.ui.tooling)
@@ -166,7 +161,7 @@ android {
 
 sqldelight {
     databases {
-        create("DirectoryDatabase") {
+        create("database") {
             packageName.set("com.jssdvv.afi")
         }
     }

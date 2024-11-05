@@ -1,75 +1,53 @@
 [versions]
+
 # Android Build Gradle
-android-minSdk = "24"
-android-targetSdk = "34"
-android-compileSdk = "34"
+android-sdk-min = "24"
+android-sdk-target = "34"
+android-sdk-compile = "34"
 
-# Jetbrains
-kotlin = "1.9.23"
-kotlinx-coroutines = "1.7.3"
-kotlinx-serialization = "1.6.0"
-androidx-navigation-compose = "2.7.0-alpha03"
-androidx-lifecycle-viewmodel-compose = "2.8.0-beta02"
-
-# Androidx
-camera = "1.3.3"
-compiler = "1.5.10"
-core-ktx = "1.12.0"
-lifecycle = "2.7.0"
-navigation = "2.7.7"
-compose-bom = "2024.02.02"
-espresso-core = "3.5.1"
-constraintlayout = "1.0.1"
-activity-compose = "1.8.2"
-androidx-test-ext-junit = "1.1.5"
-
-# Ksoup
+# Libraries
+kotlin = "2.0.21"
+kotlinx-coroutines-core = "1.9.0"
+kotlinx-serialization-json = "1.7.3"
+androidx-navigation-compose = "2.8.0-alpha10"
+androidx-lifecycle-viewmodel-compose = "2.8.2"
+activity-compose = "1.9.3"
+constraint-layout-compose = "1.1.0"
+compose-bom = "2024.10.01"
+compiler = "1.5.15"
+camera = "1.4.0"
+ktor = "3.0.0"
 ksoup = "0.3.1"
-
-# Ktor
-ktor = "2.3.7"
-
-# Koin
 koin-bom = "3.5.1"
-
-# SQLDelight
 sqldelight = "2.0.1"
-
-# MOKO
+supabase-bom = "3.0.1"
 permissions = "0.17.0"
-
-# Google ML Kit
-image-labeling = "17.0.8"
-text-recognition = "16.0.0"
-barcode-scanning = "17.2.0"
+barcode-scanning = "17.3.0"
+text-recognition = "16.0.1"
 digital-ink-recognition = "18.1.0"
 
 # Plugins
-compose-plugin = "1.6.1"
+compose-plugin = "1.6.11"
 cocoapods-plugin = "1.9.22"
-android-gradle-plugin = "8.3.1"
+android-gradle-plugin = "8.5.2"
 
 [libraries]
-# Jetbrains Kotlin
+
+# Kotlin
 jetbrains-kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 jetbrains-kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+jetbrains-kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines-core" }
+jetbrains-kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines-core" }
+jetbrains-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
 
-# Jetbrains Kotlinx
-jetbrains-kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
-jetbrains-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
-jetbrains-kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
-
-# Jetbrains Androidx
+# Navigation
 jetbrains-androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "androidx-navigation-compose" }
 jetbrains-androidx-lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle-viewmodel-compose" }
 
-# Androidx Activity
+# Android Compose
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
+androidx-constraint-layout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraint-layout-compose" }
 
-# Androidx Constraint Layout
-androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayout" }
-
-# Androidx Compose
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 androidx-compose-ui = { module = "androidx.compose.ui:ui" }
 androidx-compose-runtime = { module = "androidx.compose.runtime:runtime" }
@@ -82,7 +60,7 @@ androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling
 androidx-compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 androidx-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 
-# Androidx Camera
+# Android Camera
 androidx-camera-core = { module = "androidx.camera:camera-core", version.ref = "camera" }
 androidx-camera-view = { module = "androidx.camera:camera-view", version.ref = "camera" }
 androidx-camera-video = { module = "androidx.camera:camera-video", version.ref = "camera" }
@@ -90,15 +68,13 @@ androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.r
 androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "camera" }
 androidx-camera-extensions = { module = "androidx.camera:camera-extensions", version.ref = "camera" }
 
-# Mohamedrejeb Ksoup
-mohamedrejeb-ksoup-html = { module = "com.mohamedrejeb.ksoup:ksoup-html", version.ref = "ksoup" }
-
-# Ktor Client
+# HTTP Requests
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+mohamedrejeb-ksoup-html = { module = "com.mohamedrejeb.ksoup:ksoup-html", version.ref = "ksoup" }
 
-# Insert Koin
+# Dependency Injection
 insert-koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
 insert-koin-core = { module = "io.insert-koin:koin-core" }
 insert-koin-test = { module = "io.insert-koin:koin-test" }
@@ -106,24 +82,30 @@ insert-koin-android = { module = "io.insert-koin:koin-android" }
 insert-koin-compose = { module = "io.insert-koin:koin-compose" }
 insert-koin-android-compose = { module = "io.insert-koin:koin-androidx-compose" }
 
-# Cashapp SQLDelight
+# Local Database
 cashapp-sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 cashapp-sqldelight-sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
 cashapp-sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
 cashapp-sqldelight-coroutines-extensions = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
 
-# Icerock MOKO
+# External Database
+jan-tennert-supabase-bom = { module = "io.github.jan-tennert.supabase:bom", version.ref = "supabase-bom" }
+jan-tennert-supabase-auth-ktx = { module = "io.github.jan-tennert.supabase:postgrest-kt" }
+jan-tennert-supabase-realtime-ktx = { module = "io.github.jan-tennert.supabase:postgrest-kt" }
+jan-tennert-supabase-postgrest-ktx = { module = "io.github.jan-tennert.supabase:postgrest-kt" }
+
+# Permissions
 icerock-moko-permissions = { module = "dev.icerock.moko:permissions", version.ref = "permissions" }
 icerock-moko-permissions-test = { module = "dev.icerock.moko:permissions-test", version.ref = "permissions" }
 icerock-moko-permissions-compose = { module = "dev.icerock.moko:permissions-compose", version.ref = "permissions" }
 
 # Google ML Kit
-google-mlkit-image-labeling = { module = "com.google.mlkit:image-labeling", version.ref = "image-labeling" }
-google-mlkit-text-recognition = { module = "com.google.mlkit:text-recognition", version.ref = "text-recognition" }
 google-mlkit-barcode-scanning = { module = "com.google.mlkit:barcode-scanning", version.ref = "barcode-scanning" }
+google-mlkit-text-recognition = { module = "com.google.mlkit:text-recognition", version.ref = "text-recognition" }
 google-mlkit-digital-ink-recognition = { module = "com.google.mlkit:digital-ink-recognition", version.ref = "digital-ink-recognition" }
 
 [bundles]
+
 androidx-compose = [
     "androidx-compose-ui-tooling-preview",
     "androidx-compose-ui-tooling",
@@ -142,6 +124,11 @@ androidx-camera = [
     "androidx-camera-view",
     "androidx-camera-core"
 ]
+jan-tennert-supabase = [
+    "jan-tennert-supabase-auth-ktx",
+    "jan-tennert-supabase-realtime-ktx",
+    "jan-tennert-supabase-postgrest-ktx"
+]
 icerock-moko-permissions = [
     "icerock-moko-permissions-compose",
     "icerock-moko-permissions-test"
@@ -150,19 +137,20 @@ google-mlkit = [
     "google-mlkit-digital-ink-recognition",
     "google-mlkit-barcode-scanning",
     "google-mlkit-text-recognition",
-    "google-mlkit-image-labeling"
 ]
 
 [plugins]
+
+# Jetbrains
+jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+jetbrains-kotlin-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+jetbrains-kotlin-native-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "cocoapods-plugin" }
+jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+
 # Android
 android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
 
-# Jetbrains
-jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
-jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-jetbrains-kotlin-native-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "cocoapods-plugin" }
-jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-
-# Cashapp SQLDelight
+# Database
 cashapp-sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
