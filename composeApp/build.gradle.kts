@@ -65,6 +65,9 @@ kotlin {
                 implementation(libs.insert.koin.compose)
                 implementation(libs.insert.koin.core)
 
+                // Persisting Data
+                implementation(libs.russhwolf.multiplatform.settings.no.arg)
+
                 // Local Database
                 implementation(libs.cashapp.sqldelight.coroutines.extensions)
 

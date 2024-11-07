@@ -19,6 +19,7 @@ camera = "1.4.0"
 ktor = "3.0.0"
 ksoup = "0.3.1"
 koin-bom = "3.5.1"
+multiplatform-settings = "1.2.0"
 sqldelight = "2.0.1"
 supabase-bom = "3.0.1"
 permissions = "0.17.0"
@@ -81,6 +82,9 @@ insert-koin-test = { module = "io.insert-koin:koin-test" }
 insert-koin-android = { module = "io.insert-koin:koin-android" }
 insert-koin-compose = { module = "io.insert-koin:koin-compose" }
 insert-koin-android-compose = { module = "io.insert-koin:koin-androidx-compose" }
+
+# Persisting Data
+russhwolf-multiplatform-settings-no-arg = { module = "com.russhwolf:multiplatform-settings-no-arg", version.ref = "multiplatform-settings" }
 
 # Local Database
 cashapp-sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
