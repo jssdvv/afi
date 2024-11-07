@@ -1,4 +1,4 @@
-package com.jssdvv.afi.core.presentation.navigation.components
+package com.jssdvv.afi.core.presentation.navigation.component
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
@@ -12,7 +12,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalResourceApi::class)
 @Composable
-fun TopBar(
+fun AppTopBar(
     navController: NavController
 ) {
     TopAppBar(

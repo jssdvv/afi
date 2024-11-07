@@ -1,11 +1,11 @@
-package com.jssdvv.afi
+package com.jssdvv.afi.core.presentation
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.jssdvv.afi.core.presentation.navigation.NavigationScaffold
+import com.jssdvv.afi.core.presentation.navigation.AppNavHost
 import com.jssdvv.afi.core.presentation.theme.Theme
 
 @Composable
@@ -15,7 +15,7 @@ fun App() {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
-            NavigationScaffold()
+            AppNavHost()
         }
     }
 }
